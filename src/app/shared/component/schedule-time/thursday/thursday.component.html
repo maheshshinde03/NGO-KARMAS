@@ -1,0 +1,13 @@
+<ul class="activity-update custom-height">
+    <li class="d-flex align-items-center" [ngClass]="getClassByIndex(i)"
+        *ngFor="let voyage of voyageData;let i = index">
+        <div class="flex-grow-1">
+            <span>{{ voyage.expected_arrival_datetime | date:'d MMMM yyyy' }}{{
+                voyage.expected_arrival_datetime | date:'h:mm a' }}&nbsp;&nbsp;&nbsp;&nbsp;TO&nbsp;&nbsp;&nbsp;&nbsp;{{ voyage.expected_departure_datetime |
+                date:'d MMMM yyyy' }}{{
+                voyage.expected_departure_datetime | date:'h:mm a' }}</span>
+            <h5>Port Call Number - <span>{{voyage.port_call_no}}</span></h5>
+            <h6>Ship name - <span>{{voyage.ship_name}}</span></h6>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,3 @@
+<app-form [formConfig]="AuditTrailFormStructureStructure" (selectValueChangeChange)="selectValueChangeChange($event)"
+    [formData]="this.AuditTrailDetailsData.data" [actiontype]="'view'"></app-form>
+<app-table [jsonData]="AuditTrailDetailsData" (handleExportAction)="handleExportAction()"></app-table>

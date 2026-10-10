@@ -1,0 +1,315 @@
+export const responseMessages = {
+    "codes": [
+        {
+            "code": "2.0001",
+            "message": "Internal server error"
+        },
+        {
+            "code": "4.0001",
+            "message": "Data added successfully."
+        },
+        {
+            "code": "4.0002",
+            "message": "Data updated successfully."
+        },
+        {
+            "code": "4.0003",
+            "message": "Data deleted successfully."
+        },
+        {
+            "code": "4.0004",
+            "message": "Data retrieved successfully."
+        },
+        {
+            "code": "3.0001",
+            "message": "An error occurred while adding the record."
+        },
+        {
+            "code": "3.0002",
+            "message": "An error occurred while updating the record."
+        },
+        {
+            "code": "3.0003",
+            "message": "An error occurred while deleting the record."
+        },
+        {
+            "code": "3.0004",
+            "message": "Data not found."
+        },
+        {
+            "code": "3.0005",
+            "message": "Data already exist."
+        },
+        {
+            "code": "1.0001",
+            "message": "Validation failed"
+        },
+        {
+            "code": "1.0002",
+            "message": "API endpoint not found."
+        },
+        {
+            "code": "3.0006",
+            "message": "Invalid Password!"
+        },
+        {
+            "code": "1.0003",
+            "message": "Failed to verify JWT token"
+        },
+        {
+            "code": "1.0004",
+            "message": "JWT token has expired"
+        },
+        {
+            "code": "1.0005",
+            "message": "Unauthorized: Invalid or missing token"
+        },
+        {
+            "code": "1.0006",
+            "message": "No Token Provided"
+        },
+        {
+            "code": "4.0005",
+            "message": "Logged In Successfully"
+        },
+        {
+            "code": "1.0007",
+            "message": "Shipment Not Found"
+        },
+        {
+            "code": "1.0008",
+            "message": "BarCode Already Scanned"
+        },
+        {
+            "code": "1.0009",
+            "message": "Shipper Id is Required"
+        },
+        {
+            "code": "1.0010",
+            "message": "Consignee Id is Required"
+        },
+        {
+            "code": "2.0002",
+            "message": "Too many requests, please try again later."
+        },
+        {
+            "code": "3.0007",
+            "message": "Invalid Username!"
+        },
+        {
+            "code": "1.0011",
+            "message": "Email And Password Is Required."
+        },
+        {
+            "code": "1.0012",
+            "message": "Ngo Already Assigned to Request."
+        },
+        {
+            "code": "1.0013",
+            "message": "An error occurred while adding the record."
+        },
+        {
+            "code": "1.0014",
+            "message": "Post Id Is Required."
+        },
+        {
+            "code": "1.0015",
+            "message": "Sequence Id Is Required."
+        },
+        {
+            "code": "1.0016",
+            "message": "Ngo Id Is Required."
+        },
+        {
+            "code": "1.0017",
+            "message": "Request Id Is Required."
+        },
+        {
+            "code": "1.0018",
+            "message": "User Id Is Required."
+        },
+        {
+            "code": "1.0019",
+            "message": "User Data Not Found."
+        },
+        {
+            "code": "1.0020",
+            "message": "OTP Generated Successfully. Kindly Check E-mail."
+        },
+        {
+            "code": "1.0021",
+            "message": "OTP HAS EXPIRED."
+        },
+        {
+            "code": "1.0022",
+            "message": "Invalid Otp Kindly Recheck."
+        },
+        {
+            "code": "1.0023",
+            "message": "Password updated Successfully."
+        },
+        {
+            "code": "1.0024",
+            "message": "OTP has not been generated yet. Kindly Regenerate."
+        },
+        {
+            "code": "1.0025",
+            "message": "User Limit Has Been Exceeded."
+        },
+        {
+            "code": "1.0026",
+            "message": "Sos Not Yet Created."
+        },
+        {
+            "code": "3.0008",
+            "message": "You Have Been Blocked By Admin."
+        },
+        {
+            "code": "3.0009",
+            "message": "Account Has Been Blacklisted."
+        },
+        {
+            "code": "3.0010",
+            "message": "A record with this unique constraint already exists."
+        },
+        {
+            "code": "1.0027",
+            "message": "User Name Already In Use."
+        },
+        {
+            "code": "1.0028",
+            "message": "User Name Ready To Use."
+        },
+        {
+            "code": "1.0029",
+            "message": "You have already redeemed this coupon."
+        },
+        {
+            "code": "1.0030",
+            "message": "No coupons are currently available for this gift"
+        },
+        {
+            "code": "1.0031",
+            "message": "User is Already Block."
+        },
+        {
+            "code": "1.0032",
+            "message": "Request not Yet Completed."
+        },
+        {
+            "code": "1.0033",
+            "message": "Gift Not Found."
+        },
+        {
+            "code": "1.0034",
+            "message": "User Is Not Eligible For Gift."
+        },
+        {
+            "code": "1.0035",
+            "message": "The specified user ID does not exist. Please verify and try again."
+        },
+        {
+            "code": "1.0036",
+            "message": "Cannot update the status. Check Final Status."
+        },
+        {
+            "code": "1.0037",
+            "message": "Cannot delete request at this stage."
+        },
+        {
+            "code": "1.0038",
+            "message": "Invalid follow_id parameter"
+        },
+        {
+            "code": "1.0039",
+            "message": "is_accepted must be a boolean value"
+        },
+        {
+            "code": "1.0040",
+            "message": "User activity data not found"
+        },
+        {
+            "code": "1.0041",
+            "message": "Data Is Missing Kindly Verify Your Data."
+        },
+        {
+            "code": "1.0042",
+            "message": "Post not found."
+        },
+        {
+            "code": "1.0043",
+            "message": "Like record not found."
+        },
+        {
+            "code": "1.0044",
+            "message": "You're almost there! Complete your verification to unlock everything."
+        },
+        {
+            "code": "1.0045",
+            "message": "Invalid Status Id."
+        },
+        {
+            "code": "1.0046",
+            "message": "NGO registration not found."
+        },
+        {
+            "code": "1.0047",
+            "message": "NGO approved successfully."
+        },
+        {
+            "code": "1.0048",
+            "message": "NGO registration rejected."
+        },
+        {
+            "code": "1.0049",
+            "message": "NGO registration reopened."
+        },
+        {
+            "code": "1.0050",
+            "message": "Cannot Update Data After Approval. You Can Login And Modify."
+        },
+        {
+            "code": "1.0051",
+            "message": "NGO Registration Already Completed."
+        },
+        {
+            "code": "1.0052",
+            "message": "Email Not Found."
+        },
+        {
+            "code": "1.0053",
+            "message": "No Token Provided."
+        },
+        {
+            "code": "1.0054",
+            "message": "Token Has Expired. Please Login Again."
+        },
+        {
+            "code": "1.0055",
+            "message": "Invalid Token Signature. Please Login Again."
+        },
+        {
+            "code": "1.0056",
+            "message": "Malformed Token. Please Login Again."
+        },
+        {
+            "code": "1.0057",
+            "message": "Invalid Token Algorithm."
+        },
+        {
+            "code": "1.0058",
+            "message": "Token Not Yet Valid. Please Check System Time."
+        },
+        {
+            "code": "1.0059",
+            "message": "Invalid Token Payload. Please Login Again."
+        },
+        {
+            "code": "1.0060",
+            "message": "Unauthorized Access. Please Login."
+        }, {
+            "code": "1.0061",
+            "message": "User Already Verifyied."
+        }
+    ]
+}

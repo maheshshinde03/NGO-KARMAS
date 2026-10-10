@@ -1,0 +1,9 @@
+<!-- Table for NGO Field Management -->
+<app-table
+  [jsonData]="ngoFieldDetailsData"
+  (handleCreateAction)="handleCreateAction()"
+  (handleDeleteAction)="handleDeleteAction($event)"
+  (handleEditAction)="handleEditAction($event)"
+  (handleViewAction)="handleViewAction($event)"
+  (handleSelectRowAction)="handleEditAction($event)">
+</app-table>

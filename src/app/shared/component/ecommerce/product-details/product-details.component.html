@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body discount-product">
+        <div class="row">
+            @for( data of addProduct; track data ){
+            <div class="col-6">
+                <h4 class="discount-title">{{ data.title}}</h4>
+                <div class="main-box border-{{data.class}} mx-auto">
+                    <svg class="svg-w-24 fill-{{data.class}}">
+                        <use attr.xlink:href="assets/svg/iconly-sprite.svg#{{data.icon}}"></use>
+                    </svg>
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="discount-content font-light f-w-500">{{ data.name}}</h4>
+                    <div class="bg-light-{{data.class}} rounded">
+                        <app-feathericon [icon]="'plus'"></app-feathericon>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+<div class="col-xl-12">
+    <div class="card track-order">
+        <div class="card-body">
+            <h4>Your order has already been sent.</h4>
+            <p class="font-light f-14">Use this tracking number to keep track of your order.</p>
+            <h5>5435987456325894</h5><a class="btn btn-primary" href="javascript:void(0)">Check Your Order
+                Details</a>
+        </div>
+    </div>
+</div>

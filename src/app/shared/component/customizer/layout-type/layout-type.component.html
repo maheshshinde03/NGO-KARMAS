@@ -1,0 +1,17 @@
+<div class="radio-form checkbox-checked">
+    <div class="form-check ltr-setting" [ngClass]="{'active': layoutType == 'ltr'}">
+        <input class="form-check-input" id="flexRadioDefault1" type="radio" name="flexRadioDefault"
+            checked="" (click)="customizeLayoutType('ltr')">
+        <label class="form-check-label" for="flexRadioDefault1">LTR</label>
+    </div>
+    <div class="form-check rtl-setting" [ngClass]="{'active': layoutType == 'rtl'}">
+        <input class="form-check-input" id="flexRadioDefault2" type="radio" name="flexRadioDefault"
+            (click)="customizeLayoutType('rtl')">
+        <label class="form-check-label" for="flexRadioDefault2">RTL</label>
+    </div>
+    <div class="form-check box-setting" [ngClass]="{'active': layoutType == 'box-layout'}">
+        <input class="form-check-input" id="flexRadioDefault3" type="radio" name="flexRadioDefault"
+            (click)="customizeLayoutType('box-layout')">
+        <label class="form-check-label" for="flexRadioDefault3">Box</label>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row project-cards">
+    <div class="col-md-12 project-list">
+      <div class="card">
+        <div class="row">
+          <div class="col-md">
+            <ul class="nav nav-tabs border-tab">
+              <li class="nav-item" *ngFor="let tab of tabs">
+                <a class="nav-link" [ngClass]="{ 'active show': activeTab.name === tab.name }"
+                  (click)="setActiveTab(tab)">
+                  <app-feathericon [icon]="tab.icon"></app-feathericon>
+                  {{ tab.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 d-md-block d-none" *ngIf="isCreateButtonVisible()">
+            <div class="form-group mb-0 me-0"></div>
+            <a class="btn btn-primary d-flex align-items-center" (click)="handleRedirectAction(activeTab)">
+              <app-feathericon [icon]="'plus-square'"></app-feathericon>
+              Create {{activeTab.name}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card" style="height:100% !important;">
+        <div class="card-body">
+          <div class="tab-content" id="top-tabContent">
+            <div *ngFor="let tab of tabs" class="tab-pane fade"
+              [ngClass]="{ 'active show': activeTab.name === tab.name }">
+              <ng-container *ngIf="!isTemplateVisible()">
+                <app-table *ngIf="activeTab.name === tab.name" [jsonData]="getTabData(tab.name)" (handleCreateAction)="handleActionEvent($event,'create')" (handleDeleteAction)="handleActionEvent($event,'delete')" (handleEditAction)="handleActionEvent($event,'edit')"
+                (handleViewAction)="handleActionEvent($event,'view')" (handleSelectRowAction)="handleActionEvent($event,'enter')"></app-table>
+              </ng-container>
+              <ng-container *ngIf="isTemplateVisible() && activeTab.name === tab.name">
+                <ng-container *ngTemplateOutlet="tab.template"></ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

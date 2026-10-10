@@ -1,0 +1,50 @@
+/* styles.css or component-specific stylesheet */
+.big-checkbox {
+    width: 17px;
+    height: 17px;
+}
+
+.big-checkbox-label {
+font-size: 1em;
+margin-left: 5px;
+}
+
+.custom-width-height {
+width: 200px; /* Set your desired width */
+height: 60px; /* Set your desired height */
+}
+
+/* Adjust input field to fill the mat-form-field container */
+.custom-width-height .mat-input-element {
+height: 100%; /* Ensures the input element fills the height */
+box-sizing: border-box; /* Ensures padding and border are included in the height and width */
+}
+
+.form-control.small-input {
+    height: 2rem; /* Adjust the height as needed */
+    font-size: 0.875rem; /* Adjust the font size as needed */
+    pointer-events: none; /* Disable user interaction */
+    background-color: #e9ecef; /* Light grey background for disabled input */
+}
+
+.custom-checkbox .form-check-input[type="checkbox"] {
+    /* Customize the appearance of the checkbox */
+    border-color: #50b9b4; /* Green color for border */
+    background-color: #50b9b4; /* Green color for background */
+  }
+  
+  .custom-checkbox .form-check-input[type="checkbox"]:checked {
+    /* Customize the appearance of the checked checkbox */
+    background-color: #50b9b4; /* Green color for checked background */
+  }
+  
+  .custom-checkbox .form-check-input[type="checkbox"]:not(:checked) {
+    /* Customize the appearance of the unchecked checkbox */
+    background-color: transparent; /* Transparent background for unchecked */
+  }
+  
+  .custom-checkbox .form-check-input[type="checkbox"]:focus {
+    /* Optional: Add focus styles if needed */
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Green focus shadow */
+  }
+  

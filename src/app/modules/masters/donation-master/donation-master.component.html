@@ -1,0 +1,781 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coming Soon — [NGO Name]</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+
+  <meta name="description" content="We're launching soon. Join our mission to create impact. Subscribe for updates.">
+</head>
+<body class="ngo-coming-soon">
+  <main class="cs-container" role="main" aria-labelledby="hero-title">
+
+    <header class="cs-header" aria-hidden="false">
+      <div class="cs-brand">
+        <svg class="cs-logo" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#2dd4bf"/>
+              <stop offset="1" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <rect rx="10" width="64" height="64" fill="url(#g1)"/>
+          <path d="M19 34c0-7 9-13 15-13s15 6 15 13-7 13-15 13S19 41 19 34z" fill="white" opacity="0.14"/>
+          <path d="M32 24c-6 0-10 4-10 10s4 10 10 10 10-4 10-10-4-10-10-10z" fill="#fff"/>
+        </svg>
+        <div class="cs-brand-text">
+          <strong class="org-name">Harit Asha</strong>
+          <small class="org-tag">Empower. Educate. Restore.</small>
+        </div>
+      </div>
+
+      <nav class="cs-nav" aria-label="social links">
+        <a class="social-btn" href="#" aria-label="Follow on Twitter">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M22 5.92c-.66.29-1.37.49-2.12.58.76-.46 1.34-1.18 1.62-2.04-.71.42-1.5.72-2.34.89C18.24 4.3 17.23 4 16.14 4c-1.65 0-2.99 1.34-2.99 3 0 .24.03.48.08.71C10.1 7.57 7.13 6.1 5.02 3.6c-.27.47-.42 1.03-.42 1.62 0 1.04.52 1.97 1.31 2.51-.48-.02-.93-.15-1.33-.36v.03c0 1.52 1.07 2.79 2.49 3.08-.26.07-.54.11-.82.11-.2 0-.4-.02-.59-.06.4 1.27 1.56 2.2 2.93 2.23C6.97 16.6 5.7 16.98 4.36 16.98c-.28 0-.56-.02-.83-.05 1.63 1.05 3.57 1.66 5.66 1.66 6.8 0 10.53-5.78 10.53-10.79v-.49c.73-.53 1.35-1.2 1.85-1.96-.66.29-1.37.49-2.12.58z"></path></svg>
+        </a>
+        <a class="social-btn" href="#" aria-label="Follow on Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.12 8.44 9.88v-6.99H8.9v-2.9h1.55V9.8c0-1.53.91-2.38 2.3-2.38.67 0 1.37.12 1.37.12v1.51h-.78c-.77 0-1.01.48-1.01.97v1.16h1.72l-.28 2.9h-1.44v6.99C18.34 21.12 22 16.99 22 12z"></path></svg>
+        </a>
+        <a class="social-btn" href="#" aria-label="Follow on Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.6A4.4 4.4 0 1016.4 13 4.4 4.4 0 0012 8.6zm5.5-1.9a1.1 1.1 0 11-1.1-1.1 1.1 1.1 0 011.1 1.1z"></path></svg>
+        </a>
+      </nav>
+    </header>
+
+    <section class="cs-hero">
+      <div class="cs-hero-left">
+        <h1 id="hero-title" class="cs-title">
+          We’re Growing — <span class="cs-accent">Releasing Soon</span>
+        </h1>
+        <p class="cs-lead">
+          Building sustainable programmes to empower rural communities. Join us as we prepare our launch — be part of the impact.
+        </p>
+
+        <div class="cs-countdown" aria-live="polite" aria-atomic="true">
+          <div class="cd-item"><span id="days">00</span><small>Days</small></div>
+          <div class="cd-item"><span id="hours">00</span><small>Hours</small></div>
+          <div class="cd-item"><span id="minutes">00</span><small>Minutes</small></div>
+          <div class="cd-item"><span id="seconds">00</span><small>Seconds</small></div>
+        </div>
+
+        <form id="subscribe-form" class="cs-subscribe" aria-label="Subscribe for updates">
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Your email address" required autocomplete="email" />
+          <button type="submit" class="btn-primary">Notify Me</button>
+        </form>
+
+        <div class="cs-progress" aria-hidden="false">
+          <div class="cs-progress-info">
+            <small>Launch Readiness</small>
+            <strong id="progress-percent">72%</strong>
+          </div>
+          <div class="cs-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+            <span class="cs-progress-fill" style="width:72%"></span>
+          </div>
+        </div>
+
+        <p class="cs-cta-note">Prefer volunteering? <a href="#" class="cs-link">Join our volunteer waitlist</a></p>
+      </div>
+
+      <aside class="cs-hero-right" aria-hidden="true">
+        <div class="cs-mission-card">
+          <h3>Our Mission</h3>
+          <p>We collaborate with local leaders to deliver education, clean water and livelihood training. Our pilot starts soon — support us to scale responsibly.</p>
+          <ul class="impact-list">
+            <li><strong>120+</strong> families engaged</li>
+            <li><strong>30+</strong> trained community workers</li>
+            <li><strong>1</strong> pilot region</li>
+          </ul>
+          <a class="btn-ghost" href="#" role="button">Learn More</a>
+        </div>
+        <div class="cs-decor">
+          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgg" x1="0" x2="1">
+                <stop offset="0" stop-color="#f0fdfa"/>
+                <stop offset="1" stop-color="#e6f7fb"/>
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#bgg)"/>
+
+            <circle cx="480" cy="80" r="44" fill="#c7f9f2" opacity="0.9"/>
+            <rect x="60" y="220" width="200" height="120" rx="18" fill="#dff8f4"/>
+            <path d="M320 160c48-8 86 12 112 40s-6 56-34 82c-28 26-82 28-110 8-28-20-44-84-32-116 4-10 18-26 64-14z" fill="#bdf1ee" opacity="0.95"/>
+          </svg>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="cs-footer" aria-hidden="false">
+      <small>© <span id="year"></span> Harit Asha — All rights reserved</small>
+    </footer>
+  </main>
+
+  <script>
+    const launchDate = new Date("2026-02-01T09:00:00Z").getTime();
+
+    function pad(v){ return String(v).padStart(2,'0'); }
+
+    function updateCountdown(){
+      const now = Date.now();
+      const diff = Math.max(0, launchDate - now);
+
+      const secs = Math.floor(diff / 1000);
+      const days = Math.floor(secs / (3600*24));
+      const hours = Math.floor((secs % (3600*24)) / 3600);
+      const minutes = Math.floor((secs % 3600) / 60);
+      const seconds = secs % 60;
+
+      document.getElementById('days').textContent = pad(days);
+      document.getElementById('hours').textContent = pad(hours);
+      document.getElementById('minutes').textContent = pad(minutes);
+      document.getElementById('seconds').textContent = pad(seconds);
+
+      // update progress mock (optional)
+      const totalSpan = ( ( (Date.now()- (launchDate - 1000*60*60*24*90)) / (1000*60*60*24*90) ) * 100 );
+      const percent = Math.min(100, Math.max(0, Math.round(totalSpan)));
+      document.getElementById('progress-percent').textContent = percent + '%';
+      document.querySelector('.cs-progress-fill').style.width = percent + '%';
+      document.querySelector('.cs-progress-bar').setAttribute('aria-valuenow', percent);
+
+      if(diff <= 0){
+        clearInterval(cdInterval);
+        // Small change once the date passes
+        document.querySelector('.cs-title').innerHTML = 'We have launched — <span class="cs-accent">Thank you!</span>';
+      }
+    }
+
+    const cdInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // ---- Subscribe behavior (front-end only) ----
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('subscribe-form');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email) return;
+      // Here you would send the email to your backend. We'll simulate success.
+      form.querySelector('button').textContent = 'Subscribed ✓';
+      form.querySelector('button').setAttribute('disabled', 'true');
+      form.querySelector('input').setAttribute('disabled', 'true');
+      // optionally store locally to show joined
+      try { localStorage.setItem('nga_subscribed', JSON.stringify({email: email, date: Date.now()})); } catch(e){}
+    });
+  </script>
+</body>
+</html> -->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Coming Soon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-1: #f1f5f9;
+            --bg-2: #e0f2fe;
+            --accent-1: #16a34a;
+            --accent-2: #22c55e;
+            --accent-3: #0ea5e9;
+            --accent-4: #f97316;
+            --accent-pink: #ec4899;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --radius-xl: 26px;
+            --shadow-xl: 0 30px 80px rgba(15, 23, 42, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, #fef9c3 0%, #e0f2fe 35%, #f1f5f9 70%, #ecfdf5 100%);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .cs-shell {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Soft background shapes */
+        .blob {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 999px;
+            filter: blur(40px);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .blob--green {
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.8), transparent 60%);
+            top: -80px;
+            left: -80px;
+            animation: floatA 16s ease-in-out infinite;
+        }
+
+        .blob--blue {
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.8), transparent 60%);
+            bottom: -120px;
+            right: -40px;
+            animation: floatB 18s ease-in-out infinite;
+        }
+
+        .blob--orange {
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.7), transparent 60%);
+            top: 60%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            animation: pulse 20s ease-in-out infinite;
+        }
+
+        /* subtle ground shadow under card */
+        .cs-ground-glow {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 520px;
+            max-width: 80vw;
+            height: 120px;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.3), transparent 70%);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cs-card {
+            position: relative;
+            width: 100%;
+            max-width: 980px;
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.15fr);
+            min-height: 340px;
+            z-index: 1;
+        }
+
+        .cs-card::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: calc(var(--radius-xl) - 1px);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* top mini bar for brand feel */
+        .cs-top-bar {
+            position: absolute;
+            inset-inline: 26px;
+            top: 18px;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .cs-logo-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+            pointer-events: auto;
+        }
+
+        .cs-logo-letter {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 20%, #22c55e, #0ea5e9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #f9fafb;
+            font-family: "Poppins", system-ui, sans-serif;
+        }
+
+        .cs-logo-text {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #4b5563;
+            font-weight: 600;
+        }
+
+        .cs-top-note {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(75, 85, 99, 0.9);
+            pointer-events: auto;
+        }
+
+        .cs-left {
+            padding: 56px 36px 32px;
+            background: linear-gradient(145deg, #ffffff 0%, #ecfeff 40%, #f0fdf4 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            z-index: 1;
+        }
+
+        .cs-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.18);
+            margin-bottom: 6px;
+            width: fit-content;
+        }
+
+        .cs-pill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent-1);
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+        }
+
+        .cs-pill span {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .cs-name {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-weight: 700;
+            font-size: 34px;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .cs-name span {
+            background: linear-gradient(90deg, #16a34a, #0ea5e9, #ec4899);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .cs-coming {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            position: relative;
+            display: inline-block;
+            padding-right: 10px;
+            overflow: hidden;
+        }
+
+        .cs-coming span {
+            background: linear-gradient(120deg, #0ea5e9, #22c55e, #f97316, #ec4899);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: shimmer 5s ease-in-out infinite;
+        }
+
+        .cs-coming::after {
+            content: "";
+            display: block;
+            width: 110px;
+            height: 3px;
+            border-radius: 999px;
+            margin-top: 14px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-4), var(--accent-3), var(--accent-pink));
+            animation: barFlow 5s ease-in-out infinite;
+        }
+
+        .cs-tagline {
+            margin-top: 4px;
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 32rem;
+        }
+
+        .cs-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .cs-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: rgba(226, 232, 240, 0.9);
+            color: #111827;
+            box-shadow: 0 6px 16px rgba(148, 163, 184, 0.35);
+        }
+
+        .cs-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+        }
+
+        .cs-badge--green .cs-badge-dot {
+            background: var(--accent-1);
+        }
+
+        .cs-badge--blue .cs-badge-dot {
+            background: var(--accent-3);
+        }
+
+        .cs-badge--orange .cs-badge-dot {
+            background: var(--accent-4);
+        }
+
+        .cs-right {
+            position: relative;
+            padding: 32px 24px 24px 0;
+            background: radial-gradient(circle at top, #e0f2fe 0%, #dcfce7 60%, #fef9c3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cs-illustration-wrap {
+            width: 100%;
+            max-width: 360px;
+            position: relative;
+        }
+
+        .cs-illustration-card {
+            position: absolute;
+            left: 50%;
+            bottom: 4%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+            font-size: 11px;
+            color: #0f172a;
+        }
+
+        .cs-illustration-card-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent-1);
+        }
+
+        .cs-illustration-card strong {
+            font-weight: 600;
+            display: block;
+        }
+
+        .cs-illustration-card span {
+            color: #6b7280;
+        }
+
+        .cs-illustration svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 14px 25px rgba(15, 23, 42, 0.25));
+        }
+
+        /* Animations */
+        @keyframes floatA {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(30px, 15px, 0);
+            }
+        }
+
+        @keyframes floatB {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(-24px, -18px, 0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.45;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.08);
+                opacity: 0.75;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes barFlow {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(6px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .cs-card {
+                grid-template-columns: 1fr;
+            }
+
+            .cs-right {
+                padding: 0 24px 24px;
+            }
+
+            .cs-left {
+                padding: 60px 22px 20px;
+            }
+
+            .cs-shell {
+                padding: 16px;
+            }
+
+            .cs-top-bar {
+                inset-inline: 18px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .cs-name {
+                font-size: 26px;
+            }
+
+            .cs-coming {
+                font-size: 14px;
+                letter-spacing: 0.28em;
+            }
+
+            .cs-badges {
+                gap: 8px;
+            }
+
+            .cs-top-note {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cs-shell">
+        <div class="blob blob--green"></div>
+        <div class="blob blob--blue"></div>
+        <div class="blob blob--orange"></div>
+        <div class="cs-ground-glow"></div>
+
+        <div class="cs-card">
+            <!-- Top mini bar / brand -->
+            <div class="cs-top-bar">
+                <div class="cs-logo-chip">
+                    <div class="cs-logo-letter">K</div>
+                    <div class="cs-logo-text">KARMAS</div>
+                </div>
+                <div class="cs-top-note">Creating impact together</div>
+            </div>
+
+            <!-- LEFT: NGO name + COMING SOON text -->
+            <div class="cs-left">
+                <div class="cs-pill">
+                    <span class="cs-pill-dot"></span>
+                    <span>NGO • COMMUNITY • ENVIRONMENT</span>
+                </div>
+
+                <h1 class="cs-name"><span>Karmas</span></h1>
+
+                <h2 class="cs-coming">
+                    COMING <span>SOON</span>
+                </h2>
+
+                <p class="cs-tagline">
+                    We’re preparing a new space to support communities, protect nature and create positive change
+                    together.
+                </p>
+
+                <div class="cs-badges">
+                    <div class="cs-badge cs-badge--green">
+                        <span class="cs-badge-dot"></span>
+                        <span>Community Impact</span>
+                    </div>
+                    <div class="cs-badge cs-badge--blue">
+                        <span class="cs-badge-dot"></span>
+                        <span>Social Change</span>
+                    </div>
+                    <div class="cs-badge cs-badge--orange">
+                        <span class="cs-badge-dot"></span>
+                        <span>Better Tomorrow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Colorful NGO-style illustration -->
+            <div class="cs-right">
+                <div class="cs-illustration-wrap">
+                    <div class="cs-illustration">
+                        <!-- Simple NGO themed SVG: hands + plant + sun -->
+                        <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="leafGrad" x1="0" x2="1">
+                                    <stop offset="0" stop-color="#22c55e" />
+                                    <stop offset="1" stop-color="#16a34a" />
+                                </linearGradient>
+                                <linearGradient id="handGrad" x1="0" x2="1">
+                                    <stop offset="0" stop-color="#fed7aa" />
+                                    <stop offset="1" stop-color="#fdba74" />
+                                </linearGradient>
+                                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0" stop-color="#e0f2fe" />
+                                    <stop offset="1" stop-color="#bbf7d0" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Sky / Background -->
+                            <rect x="0" y="0" width="360" height="260" rx="32" fill="url(#skyGrad)" />
+
+                            <!-- Sun -->
+                            <circle cx="290" cy="60" r="26" fill="#fde68a" />
+
+                            <!-- Hills -->
+                            <path d="M0 150c40-30 80-30 120 0s80 30 120 0 80-30 120 0v110H0z" fill="#4ade80"
+                                opacity="0.85" />
+                            <path d="M0 170c35-26 70-26 105 0s70 26 105 0 70-26 105 0v90H0z" fill="#22c55e"
+                                opacity="0.9" />
+
+                            <!-- Plant stem -->
+                            <rect x="171" y="90" width="18" height="70" rx="8" fill="#15803d" />
+
+                            <!-- Leaves -->
+                            <path d="M180 90c-24-2-40-20-43-40 22-2 44 8 53 25-2 7-5 12-10 15z" fill="url(#leafGrad)" />
+                            <path d="M180 90c24-2 40-20 43-40-22-2-44 8-53 25 2 7 5 12 10 15z" fill="url(#leafGrad)" />
+
+                            <!-- Hands (cupping the plant) -->
+                            <path
+                                d="M90 190c24-10 44-10 60 0 10 6 18 10 30 10s20-4 30-10c16-10 36-10 60 0 0 24-16 42-36 48-14 4-32 3-54-1-22 4-40 5-54 1-20-6-36-24-36-48z"
+                                fill="url(#handGrad)" />
+
+                            <!-- Hand details lines -->
+                            <path d="M135 192c6 3 11 5 19 6m72-6c-6 3-11 5-19 6" stroke="#ea580c" stroke-width="2"
+                                stroke-linecap="round" opacity="0.4" />
+
+                            <!-- Small people / community icons -->
+                            <circle cx="60" cy="80" r="10" fill="#0ea5e9" />
+                            <rect x="54" y="92" width="12" height="20" rx="4" fill="#0ea5e9" />
+
+                            <circle cx="310" cy="112" r="9" fill="#f97316" />
+                            <rect x="304" y="122" width="12" height="18" rx="4" fill="#f97316" />
+
+                            <circle cx="80" cy="130" r="8" fill="#22c55e" />
+                            <rect x="75" y="139" width="10" height="16" rx="4" fill="#22c55e" />
+                        </svg>
+                    </div>
+
+                    <div class="cs-illustration-card">
+                        <span class="cs-illustration-card-dot"></span>
+                        <div>
+                            <strong>Coming Soon</strong>
+                            <span>We are building something impactful.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

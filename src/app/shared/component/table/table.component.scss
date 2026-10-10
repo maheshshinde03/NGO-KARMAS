@@ -1,0 +1,204 @@
+::ng-deep .p-datatable .p-datatable-thead>tr>th,
+td {
+  padding: 0.5rem 0.5rem !important;
+}
+
+::ng-deep .p-paginator {
+  padding: 0%;
+}
+
+::ng-deep .p-datatable .p-datatable-header {
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #f4f5f8;
+  background-color: white;
+  border-radius: 5px;
+}
+
+::ng-deep .p-datatable .p-sortable-column.p-highlight {
+  background: #f9fafb !important;
+  color: #43b9b2 !important;
+}
+
+::ng-deep .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: #43b9b2 !important;
+}
+
+input[type="input"] {
+  font-size: 60% !important;
+}
+
+::ng-deep .p-inputtext {
+  padding-bottom: 0.5rem !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+:host ::ng-deep {
+  .p-tag-array {
+    display: inline-block;
+    /* Ensures tags are displayed inline */
+    margin-right: 8px;
+    /* Space between tags */
+    border-radius: 6px;
+  }
+
+  .p-tag-array .p-tag {
+    background: #50b9b4;
+    /* Custom background color */
+    color: white;
+    /* Text color */
+  }
+}
+
+/* Optional: Custom styling for dropdown menu */
+.dropdown-menu {
+  border: none;
+  /* Remove default border */
+}
+
+.card {
+  background-color: #fff;
+  /* White background for card */
+  border: 1px solid #ccc;
+  /* Add border to card */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Soft shadow effect */
+}
+
+.card-body {
+  padding: 10px;
+  /* Adjust padding inside card body */
+}
+
+.dropdown-item {
+  font-size: 14px;
+  /* Adjust font size */
+  padding: 10px 20px;
+  /* Adjust padding for dropdown items */
+  color: #333;
+  /* Text color */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background color */
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  /* Light background color on hover */
+  color: #333;
+  /* Text color on hover */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  /* Change cursor to pointer on hoverable items */
+}
+
+.custom-right {
+  margin-right: 1% !important;
+}
+
+.btn-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #50b9b3;
+  /* Button color */
+  color: #fff;
+  /* Text color */
+  padding: 8px 16px;
+  /* Padding */
+  border-radius: 50px;
+  /* Rounded corners */
+  font-size: 14px;
+  /* Font size */
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom i {
+  margin-right: 8px;
+  /* Space between icon and text */
+  font-size: 16px;
+  /* Icon size */
+}
+
+.btn-custom:hover {
+  background-color: #3a9a8f;
+  /* Darker color on hover */
+}
+
+.btn-custom:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
+  /* Focus outline */
+}
+
+/* Success button style */
+.btn-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #28a745;
+  /* Success color */
+  color: #fff;
+  /* Text color */
+  padding: 8px 16px;
+  /* Padding */
+  border-radius: 50px;
+  /* Rounded corners */
+  font-size: 14px;
+  /* Font size */
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success i {
+  margin-right: 8px;
+  /* Space between icon and text */
+  font-size: 16px;
+  /* Icon size */
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  /* Darker green on hover */
+}
+
+.btn-success:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
+  /* Focus outline */
+}
+
+.custom-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.custom-td {
+  text-align: center;
+}
+
+::ng-deep .cdk-overlay-container {
+  position: fixed;
+  z-index: 2000 !important;
+}
+
+.disabled-link {
+  pointer-events: none; /* Prevents click events */
+  color: gray; /* Changes text color to indicate disabled state */
+  cursor: not-allowed; /* Changes cursor to indicate disabled state */
+  opacity: 0.5;  /* Makes it look disabled */
+}
+
+
+.custom-button {
+  background-color: #164761 !important;
+  border: 1px solid #164761 !important;
+  border-radius: 5px;
+  color: #ffffff !important;
+}

@@ -1,0 +1,7 @@
+<!-- Form for creating, editing, or viewing a designation -->
+<app-form
+  [formConfig]="designationFormStructure"
+  [actiontype]="routeName"
+  [formData]="designationDetailsData.data"
+  (emitData)="handleSubmit($event)">
+</app-form>

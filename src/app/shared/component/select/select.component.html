@@ -1,0 +1,16 @@
+<label [ngClass]="{'text-danger': required}">{{ label }}</label>
+<div *ngIf="!bindMultiple">
+  <ng-select [items]="listData" [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder"
+    (change)="onSelectionChange($event)" [formControl]="formControl" [multiple]="bindMultiple" [disabled]="disable"
+    notFoundText="No Data Available" [(ngModel)]="selectedCity">
+  </ng-select>
+</div>
+
+
+
+<div *ngIf="bindMultiple">
+  <ng-select [items]="listData" [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder"
+    (change)="onSelectionChange($event)" [formControl]="formControl" [multiple]="bindMultiple" [closeOnSelect]="false"
+    [disabled]="disable" notFoundText="No Data Available" [(ngModel)]="selectedCity">
+  </ng-select>
+</div>

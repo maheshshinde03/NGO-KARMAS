@@ -1,0 +1,108 @@
+<div class="header">
+    <span class="title">{{'Notifications'}}</span>
+    <span class="close-btn" (click)="onCancel()">✖</span>
+</div>
+<div class="tab-pane fade active show">
+    <div class="card mb-0">
+        <div class="card-body p-0">
+            <!-- <div class="taskadd">
+                <div class="table-responsive custom-scrollbar">
+                    <table class="table">
+                        <tbody>
+                            <tr class="notifications-category" *ngIf="unreadCount > 0">
+                                <td colspan="3" class="custom-td">
+                                    <div class="row">
+                                        <div class="col-10"><span>UNREAD</span></div>
+                                        <div class="col-2">
+                                            <button class="btn btn-primary w-100 mb-3" (click)="readAllNotification()">
+                                                <app-feathericon [icon]="'check-circle'" class="me-1"></app-feathericon>
+                                                All Read
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            @for(notification of notificationsData; track notification){
+                            <tr *ngIf="!notification?.is_read">
+                                <td>
+                                    <span class="date-time">{{notification.created_at | date:'yyyy-MM-dd hh:mm a'}}</span>
+                                    <h6 class="task_title_0 f-w-600">{{ notification.ship_name }}</h6>
+                                    <p class="project_name_0">{{notification.port_call_no}}</p>
+                                </td>
+                                <td>
+                                    <p class="task_desc_0">{{ notification.content }}</p>
+                                </td>
+                                <td>
+                                    <button class="mark-as-read-btn" (click)="readNotification(notification?.notification_details_id)">
+                                        <app-feathericon [icon]="'check-circle'"></app-feathericon>
+                                        Mark As Read
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                            <tr class="notifications-category">
+                                <td colspan="3">
+                                    <span>READ</span>
+                                </td>
+                            </tr>
+                            @for(notification of notificationsData; track notification){
+                            <tr *ngIf="notification?.is_read">
+                                <td>
+                                    <span class="date-time">{{notification.created_at | date:'yyyy-MM-dd hh:mm a'}}</span>
+                                    <h6 class="task_title_0 f-w-600">{{ notification.ship_name }}</h6>
+                                    <p class="project_name_0">{{notification.port_call_no}}</p>
+                                </td>
+                                <td>
+                                    <p class="task_desc_0">{{ notification.content }}</p>
+                                </td>
+                                <td>
+                                    <button class="mark-as-read" disabled="true">
+                                        <app-feathericon [icon]="'check-circle'"></app-feathericon>
+                                        Read
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                            @empty{
+                            <tr>
+                                <div class="card-body">
+                                    <div class="details-bookmark text-center"><span>No tasks found.</span></div>
+                                </div>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+            <div class="notifications-container">
+                <div class="notification-card" *ngFor="let item of notificationsData"
+                    [class.viewed]="item.is_viewed === 1">
+                    <div class="left-section">
+                        <!-- <img class="user-img" [src]="item.user_image" alt="user" /> -->
+                        <!-- <img class="user-img" [src]="sanitizeImage(item.user_image)" alt="user" /> -->
+                        <img class="user-img" [src]="sanitizeImage(item.user_image)" />
+                    </div>
+
+                    <div class="right-section">
+                        <div class="details-row">
+                            <p class="notification-text">
+                                {{ item.notification_details || 'New notification' }}
+                            </p>
+                        </div>
+
+                        <div class="meta-row">
+                            <span class="time">
+                                {{ item.created_at | date:'MMM d, y, h:mm a' }}
+                            </span>
+
+                            <span class="badge" *ngIf="item.notification_type">
+                                {{ item.notification_type.replace('-', ' ') }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

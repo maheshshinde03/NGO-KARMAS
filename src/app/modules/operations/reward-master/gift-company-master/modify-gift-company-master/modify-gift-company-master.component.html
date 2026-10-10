@@ -1,0 +1,7 @@
+<app-form
+  [formConfig]="companyFormStructure"
+  [actiontype]="routeName"
+  (emitData)="handleSubmit($event)"
+  [formData]="companyMasterDetailsData.data"
+  (photoBase64Uploaded)="handleFileUpload($event)"
+></app-form>

@@ -1,0 +1,281 @@
+<p-table #dt2 [value]="jsonData.data" [dataKey]="jsonData.dataKey" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading" [paginator]="true" [globalFilterFields]="jsonData.filterfields"
+    [tableStyle]="{ 'min-width': '75rem' }" class="table-hover" selectionMode="multiple" [(selection)]="selectedRows">
+    <ng-template pTemplate="caption"
+        *ngIf="jsonData.exportExcel || jsonData.isSearch || jsonData.button || jsonData.secondbutton">
+        <div class="d-flex justify-content-end">
+            <div class="custom-right" *ngIf="jsonData.exportExcel">
+                <button class="btn btn-outline-primary m-r-5 custom-button" (click)="buttonClick('export')">
+                    Export Excel
+                </button>
+            </div>
+            <div class="m-r-5" *ngIf="jsonData.isSearch">
+                <p-iconField iconPosition="left">
+                    <p-inputIcon class="d-flex">
+                        <i class="icofont icofont-search"></i>
+                    </p-inputIcon>
+                    <input #searchInput pInputText type="text" placeholder="Search..."
+                        (input)="dt2.filterGlobal(searchInput.value, 'contains')" />
+                </p-iconField>
+            </div>
+            <a class="btn btn-primary d-flex align-items-center custom-right custom-button" *ngIf="jsonData.thirdbutton"
+                (click)="buttonClick('createthird')">
+                <app-feathericon [icon]="'plus-square'" class="m-r-5"></app-feathericon>
+                {{jsonData.thirdbuttonname}}
+            </a>
+            <a class="btn btn-primary d-flex align-items-center custom-right custom-button"
+                *ngIf="jsonData.secondbutton" (click)="buttonClick('createsecond')">
+                <app-feathericon [icon]="'plus-square'" class="m-r-5"></app-feathericon>
+                {{jsonData.secondbuttonname}}
+            </a>
+            <a class="btn btn-primary d-flex align-items-center custom-button" *ngIf="jsonData.button"
+                [ngClass]="{ 'disabled-link': !canCreate }" (click)="buttonClick('create')">
+                <app-feathericon [icon]="'plus-square'" class="m-r-5"></app-feathericon>
+                {{jsonData.buttonname}}
+            </a>
+            <a class="btn btn-primary d-flex align-items-center custom-button" *ngIf="jsonData.checkboxbutton"
+                [ngClass]="{ 'disabled-link': !canCreate }" (click)="buttonClick('checkboxselect')">
+                <app-feathericon [icon]="'plus-square'" class="m-r-5"></app-feathericon>
+                {{jsonData.checkboxbuttonname}}
+            </a>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 1rem;" *ngIf="jsonData.isCheckBox">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <ng-container *ngFor="let header of jsonData.headers">
+                <ng-container *ngIf="header.key == 'SR.NO' || header.key == 'action';else sortHeader">
+                    <th [style.width]="calculateHeaderSize(jsonData.headers.length,header.size)">{{ header.label }}</th>
+                </ng-container>
+                <ng-template #sortHeader>
+                    <th [pSortableColumn]="header.key"
+                        [style.width]="calculateHeaderSize(jsonData.headers.length,header.size)">{{ header.label
+                        }}<p-sortIcon [field]="header.key" /></th>
+                </ng-template>
+            </ng-container>
+        </tr>
+        <tr *ngIf="!jsonData.isSearchIndividual">
+            <ng-container *ngFor="let header of jsonData.headers">
+                <th>
+                    <p-columnFilter type="text" [field]="header.key" [placeholder]="'Search'" ariaLabel="Filter Name"
+                        *ngIf="header.type != 'autoIncrementNumber' && header.type != 'action'" matchMode="contains" />
+                </th>
+            </ng-container>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+        <tr (click)="buttonClick('selectrow',data[jsonData.dataKey],$event)" class="cursor-pointer">
+            <td *ngIf="jsonData.isCheckBox">
+                <p-tableCheckbox [value]="data"></p-tableCheckbox>
+            </td>
+            <ng-container *ngFor="let header of jsonData.headers; let colIndex = index" [ngSwitch]="header.type">
+                <td *ngSwitchCase="'statuses'">
+                    <p-tag [value]="data[header.key]" [severity]="getSeverity(data[header.key])" />
+                </td>
+                <td *ngSwitchCase="'diff'">
+                    {{ getObjectsDiff(data[header?.firstkey ?? ''], data[header?.secondKey ?? '']) | json }} </td>
+                <td *ngSwitchCase="'arrayTags'">
+                    <p-tag class="p-tag-array" *ngFor="let tag of data[header.key];let last = last"
+                        [value]="tag[header.bindTagName]" [style.margin-right.px]="last ? 0 : 8" />
+                </td>
+                <td *ngSwitchCase="'statusesYesNo'">
+                    <ng-container [ngSwitch]="data[header.key]">
+                        <p-tag *ngSwitchCase="1" value="Yes" severity="success"></p-tag>
+                        <p-tag *ngSwitchCase="0" value="No" severity="warning"></p-tag>
+                    </ng-container>
+                </td>
+                <td *ngSwitchCase="'convertboolean'">
+                    <ng-container [ngSwitch]="data[header.key]">
+                        <p-tag *ngSwitchCase="1" value="True" severity="success"></p-tag>
+                        <p-tag *ngSwitchCase="0" value="False" severity="warning"></p-tag>
+                    </ng-container>
+                </td>
+                <td *ngSwitchCase="'statusesUploadNotUpload'">
+                    <ng-container [ngSwitch]="data[header.key]">
+                        <p-tag *ngSwitchCase="19" value="Upload" severity="success"></p-tag>
+                        <p-tag *ngSwitchCase="20" value="Not Upload" severity="warning"></p-tag>
+                    </ng-container>
+                </td>
+                <td *ngSwitchCase="'statusesSendOrNot'">
+                    <ng-container [ngSwitch]="data[header.key]">
+                        <button *ngSwitchCase="1" class="btn-custom"
+                            (click)="buttonClick('send',data[jsonData.dataKey])">
+                            <i class="fa fa-location-arrow"></i> Send
+                        </button>
+                        <button *ngSwitchCase="0" class="btn-success" type="button">
+                            <i class="fa fa-check"></i> Done
+                        </button>
+                    </ng-container>
+                </td>
+                <td *ngSwitchCase="'active&inactive'">
+                    <p-tag [value]="data[header.key] | valueTransform" [severity]="getSeverity(data[header.key])" />
+                </td>
+                <td *ngSwitchCase="'viewPdf'" class="custom-td">
+                    <a class="custom-link" (click)="buttonClick('view',data[jsonData.dataKey])"><i class="fa fa-eye"
+                            style="color: #50b9b3;" placement="top" ngbTooltip="Click To See Image"></i></a>
+                </td>
+                <td *ngSwitchCase="'urlLink'" class="custom-td">
+                    <!-- Open Eye -->
+                    <a class="custom-link" *ngIf="data[header.key]" (click)="openDetailDialog(data[header.key])"><i
+                            class="fa fa-eye" style="color: #50b9b3;" placement="top"
+                            ngbTooltip="Click To See Image"></i></a>
+
+                    <!-- Closed Eye -->
+                    <i class="fa fa-eye-slash" *ngIf="!data[header.key]" style="color: red;" placement="top"
+                        ngbTooltip="Not Uploaded"></i>
+                </td>
+                <td *ngSwitchCase="'date&time'">
+                    <div class="flex-grow-1"> <a>
+                            <h6 class="f-w-500">{{ data[header.key] | date:'d MMMM yyyy' }}</h6><span
+                                class="font-light f-w-400 f-13">{{ data[header.key] | date:'h:mm a' }}</span>
+                        </a>
+                    </div>
+                </td>
+                <td *ngSwitchCase="'date'">
+                    <div class="flex-grow-1"> <a>
+                            <h6 class="f-w-500">{{ data[header.key] | date:'d MMMM yyyy' }}</h6>
+                        </a>
+                    </div>
+                </td>
+                <td *ngSwitchCase="'autoIncrementNumber'">
+                    {{ rowIndex + 1 }}
+                </td>
+                <td *ngSwitchCase="'json'">
+                    {{ data[header.key] | json }}
+                </td>
+                <td *ngSwitchCase="'amount'">
+                    {{ numberFormat(data[header.key])}}
+                </td>
+                <td *ngSwitchDefault>
+                    {{ data[header.key] }}
+                </td>
+                <td *ngSwitchCase="'action'" class="action-button">
+                    <a (click)="buttonClick('edit',data[jsonData.dataKey]);buttonClickDataFull('editFullData',data)"
+                        [ngClass]="{ 'disabled-link': actiontype === 'view' || !canEdit}" placement="top"
+                        ngbTooltip="Edit" class="icon-class" *ngIf="header.buttonNames.includes('edit')">
+                        <app-feathericon [icon]="'edit-2'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClickDataFull('assign',data)"
+                        [ngClass]="{ 'disabled-link': isAssignDisabled(data) }" placement="top" ngbTooltip="Assign"
+                        class="icon-class" *ngIf="header.buttonNames.includes('assign')">
+                        <app-feathericon [icon]="'play-circle'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('view',data[jsonData.dataKey])"
+                        [ngClass]="{ 'disabled-link': actiontype === 'view' || !canView }" placement="top"
+                        ngbTooltip="View" class="icon-class" *ngIf="header.buttonNames.includes('view')">
+                        <app-feathericon [icon]="'eye'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('delete',data[jsonData.dataKey],$event,isValidDataKey(jsonData.operationId) ? data[jsonData.operationId] : null);buttonClickDataFull('deleteWithFullData',data,rowIndex)"
+                        [ngClass]="{ 'disabled-link': actiontype === 'view' || !canDelete }" placement="top"
+                        ngbTooltip="Delete" class="icon-class" *ngIf="header.buttonNames.includes('delete')">
+                        <app-feathericon [icon]="'trash-2'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('upload',data[jsonData.dataKey])" placement="top" ngbTooltip="Upload"
+                        class="icon-class" *ngIf="header.buttonNames.includes('upload')">
+                        <app-feathericon [icon]="'upload'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('track',data[jsonData.dataKey])" placement="top" ngbTooltip="Track"
+                        class="icon-class" *ngIf="header.buttonNames.includes('track')">
+                        <app-feathericon [icon]="'map-pin'"></app-feathericon></a>
+                    <a (click)="buttonClick('comments',data[jsonData.dataKey])" placement="top" ngbTooltip="Comments"
+                        class="icon-class" *ngIf="header.buttonNames.includes('comments')">
+                        <app-feathericon [icon]="'message-square'"></app-feathericon></a>
+
+                    <a (click)="buttonClick('enter',data[jsonData.dataKey])" placement="top" ngbTooltip="enter"
+                        class="icon-class" *ngIf="header.buttonNames.includes('enter')">
+                        <app-feathericon [icon]="'log-in'"></app-feathericon></a>
+
+                    <a (click)="buttonClick('check',data[jsonData.dataKey],null,'',data)" placement="top"
+                        [ngClass]="{ 'disabled-link': !canApprove}" ngbTooltip="Approve" class="icon-class" *ngIf="header.buttonNames.includes('correct') && (+data[jsonData.approveRejectKey] !== jsonData.approveId &&
+        +data[jsonData.approveRejectKey] !== jsonData.rejectId)">
+                        <!-- *ngIf="header.buttonNames.includes('correct') && (data[jsonData.approveRejectKey] !== data[jsonData.approveId] || data[jsonData.approveRejectKey] !== data[jsonData.rejectId])"> -->
+                        <app-feathericon [icon]="'check-circle'"></app-feathericon>
+                    </a>
+
+                    <a (click)="buttonClick('cross',data[jsonData.dataKey],null,'',data)" placement="top"
+                        [ngClass]="{ 'disabled-link': !canReject }" ngbTooltip="Reject" class="icon-class"
+                        *ngIf="header.buttonNames.includes('cross') && (data[jsonData.approveRejectKey] !== jsonData.approveId && data[jsonData.approveRejectKey] !== jsonData.rejectId)">
+                        <app-feathericon [icon]="'x-circle'"></app-feathericon>
+                    </a>
+
+                    <a (click)="buttonClick('requestFile',data[jsonData.dataKey],null,'',data)" placement="top"
+                        [ngClass]="{ 'disabled-link': !canReject }" ngbTooltip="Request For Documents" class="icon-class"
+                        *ngIf="header.buttonNames.includes('requestFile') && !data['is_document_required']">
+                        <app-feathericon [icon]="'file'"></app-feathericon>
+                    </a>
+
+                    <a (click)="buttonClick('rollback',data[jsonData.dataKey])"
+                        [ngClass]="{ 'disabled-link': !canRollback }" placement="top" ngbTooltip="Roll Back"
+                        class="icon-class"
+                        *ngIf="header.buttonNames.includes('rollback') && data[jsonData.blockDataKey]">
+                        <app-feathericon [icon]="'rotate-ccw'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('unlock',data[jsonData.dataKey])"
+                        [ngClass]="{ 'disabled-link': !canUnlock }" placement="top" ngbTooltip="Unlock"
+                        class="icon-class" *ngIf="header.buttonNames.includes('unlock') && data[jsonData.blockDataKey]">
+                        <app-feathericon [icon]="'unlock'"></app-feathericon>
+                    </a>
+                    <a (click)="buttonClick('lock',data[jsonData.dataKey])" [ngClass]="{ 'disabled-link': !canUnlock }"
+                        placement="top" ngbTooltip="Lock" class="icon-class"
+                        *ngIf="header.buttonNames.includes('lock') && !data[jsonData.blockDataKey]">
+                        <app-feathericon [icon]="'lock'"></app-feathericon>
+                    </a>
+                </td>
+                <ng-container *ngIf="header?.isbuttonMenu">
+                    <td *ngSwitchCase="'action'" class="action-button">
+                        <div class="dropdown icon-dropdown">
+                            <app-feathericon [icon]="'more-vertical'" type="button"
+                                (click)="openMenu(rowIndex)"></app-feathericon>
+                            <div class="dropdown-menu dropdown-menu-end shadow-sm" [class.show]="openmenu == rowIndex">
+                                <div class="card border-0 rounded-3">
+                                    <div class="card-body p-2">
+                                        <a class="dropdown-item cursor-pointer"
+                                            *ngIf="header.buttonMenu.includes('upload')"
+                                            (click)="buttonClick('upload', data[jsonData.dataKey])">Voyage Manifest
+                                            Upload</a>
+                                        <a class="dropdown-item cursor-pointer"
+                                            *ngIf="header.buttonMenu.includes('track')"
+                                            (click)="buttonClick('track', data[jsonData.dataKey])">Voyage Track</a>
+                                        <a class="dropdown-item cursor-pointer"
+                                            *ngIf="header.buttonMenu.includes('comments')"
+                                            (click)="buttonClick('comments', data[jsonData.dataKey])">Voyage
+                                            Comments</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </ng-container>
+            </ng-container>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <!-- <td colspan="7">No data found.</td> -->
+            <td colspan="12"><app-no-record-found></app-no-record-found></td>
+        </tr>
+
+    </ng-template>
+</p-table>
+
+<ng-template #DeleteConfirmation let-modal>
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="modal-toggle-wrapper">
+                <ul class="modal-img">
+                    <li> <img src="assets/images/gif/danger.gif" alt="error"></li>
+                </ul>
+                <h4 class="text-center pb-2">Confirm Delete!</h4>
+                <p class="text-center">Are you sure you want to delete this item? This action cannot be undone.</p>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="confirmDelete()">Delete</button>
+                    <button class="btn btn-secondary" type="button"
+                        (click)="modal.dismiss('Close click')">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

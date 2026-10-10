@@ -1,0 +1,7 @@
+<app-table [jsonData]="formDetailsData" 
+    (handleCreateAction)="handleCreateRoute()"
+    (handleDeleteAction)="handleDeleteActionRoute($event)" 
+    (handleEditAction)="handleEditActionRoute($event)"
+    (handleViewAction)="handleViewActionRoute($event)"
+    (handleDeleteActionWithData)="handleDeleteActionWithData($event)"
+    ></app-table>

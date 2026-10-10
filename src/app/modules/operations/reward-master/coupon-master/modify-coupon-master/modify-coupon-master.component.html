@@ -1,0 +1,9 @@
+<!-- modify-coupons.component.html -->
+
+<!-- Form for creating, editing, or viewing a coupon -->
+<app-form
+  [formConfig]="couponsFormStructure"
+  [actiontype]="routeName"
+  [formData]="couponsDetailsData.data"
+  (emitData)="handleSubmit($event)">
+</app-form>

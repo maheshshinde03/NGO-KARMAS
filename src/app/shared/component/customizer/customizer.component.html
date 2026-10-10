@@ -1,0 +1,93 @@
+<div class="sidebar-pannle-main" (click)="Customizer('layout')">
+    <ul>
+        <li class="cog-click icon-btn btn-primary" id="cog-click"><i class="fa fa-spin fa-cog"></i></li>
+    </ul>
+</div>
+<section class="setting-sidebar" [ngClass]="{'open' : layoutService.customizer != '' }">
+    <div class="customizer-header">
+        <div class="theme-title">
+            <div>
+                <h4>Preview Settings</h4>
+                <p class="mb-0">Try It Real Time<i class="fa-solid fa-thumbs-up fa-fw"></i></p>
+            </div>
+            <div class="flex-grow-1">
+                <a class="icon-btn btn-outline-light button-effect pull-right cog-close" id="cog-close"
+                    (click)="Customizer('')">
+                    <i class="fa-solid fa-xmark fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="customizer-body">
+        <button class="btn btn-primary plus-popup mt-2" (click)="openModal(popup)">Configuration</button>
+        <ng-template #popup let-modal>
+            <div class="modal-header modal-copy-header">
+                <h3 class="headerTitle mb-0">Customizer configuration</h3>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body config-popup">
+                    <div class="row">
+
+                        <p>To replace our design with your desired theme. Please do configuration as mention </p>
+                        <p> <b> Path : src > app > shared > services > layout.services.ts </b> </p>
+                        <div>
+                            <pre>
+  <code>
+     public config = &#123;  
+        settings&#58; &#123;
+           layout_type&#58; '{{layoutService.config.settings.layout_type}}',
+           layout_version&#58; '{{layoutService.config.settings.layout_version}}',
+           sidebar_type&#58; '{{layoutService.config.settings.sidebar_type}}',
+        &#125;,
+        color&#58; &#123;
+           primary_color&#58; '{{layoutService.config.color.primary_color}}',
+           secondary_color&#58; '{{layoutService.config.color.secondary_color}}'
+        &#125;
+     &#125;
+  </code>
+                       </pre>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-2" (click)="copyText(this.layoutService.config)">Copy
+                    Json</button>
+            </div>
+        </ng-template>
+        <div class="mb-3 mt-4 p-2 rounded-3 default-border b-t-primary">
+            <div class="color-header mb-2">
+                <h4>Theme color mode:</h4>
+                <p class="font-light">Choose between 3 different mix layout.</p>
+            </div>
+            <app-theme-mode></app-theme-mode>
+        </div>
+        <div class="mb-3 p-2 rounded-3 default-border b-t-primary">
+            <div class="sidebar-icon mb-2">
+                <h4>Sidebar icon:</h4>
+                <p class="font-light">Choose between 2 different sidebar icon.</p>
+            </div>
+            <app-sidebar-icon></app-sidebar-icon>
+        </div>
+        <div class="mb-3 p-2 rounded-3 default-border b-t-primary">
+            <div class="theme-layout mb-2">
+                <h4>Layout type:</h4>
+                <p class="font-light">Choose between 3 different layout types.</p>
+            </div>
+            <app-layout-type></app-layout-type>
+        </div>
+        <div class="mb-3 p-2 rounded-3 default-border b-t-primary">
+            <div class="sidebar-type mb-2">
+                <h4>Sidebar type:</h4>
+                <p class="font-light">Choose between 2 different sidebar types.</p>
+            </div>
+            <app-sidebar-type></app-sidebar-type>
+        </div>
+        <div class="customizer-color mb-3 p-2 rounded-3 default-border b-t-primary">
+            <div class="color-picker mb-3">
+                <h4>Color Picker:</h4>
+            </div>
+            <app-color-picker></app-color-picker>
+        </div>
+    </div>
+</section>

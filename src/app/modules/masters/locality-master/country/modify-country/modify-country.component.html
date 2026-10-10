@@ -1,0 +1,8 @@
+<app-form
+[formConfig]="countrySearchGroupStructure"
+(emitData)="handleSubmit($event)"
+(selectValueChangeChange)="handleSelectValueChange($event)" 
+[formData]="countryDetailsData.data"
+[actiontype]="routeName" 
+></app-form>
+  

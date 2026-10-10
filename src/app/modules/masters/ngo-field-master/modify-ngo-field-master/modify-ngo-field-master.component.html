@@ -1,0 +1,7 @@
+<!-- Form for NGO Field Create/Edit/View -->
+<app-form
+  [formConfig]="ngoFieldFormStructure"
+  [actiontype]="routeName"
+  [formData]="ngoFieldDetailsData.data"
+  (emitData)="handleSubmit($event)">
+</app-form>

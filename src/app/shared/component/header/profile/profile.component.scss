@@ -1,0 +1,27 @@
+/* Styles for the custom dialog container */
+.custom-dialog-container {
+  max-height: 90vh; // Ensure the dialog doesn't exceed 90% of the viewport height
+  overflow: auto; // Enable scrolling if content exceeds the dialog height
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-dialog-container .mat-dialog-content {
+  overflow: auto; // Handle overflow within the content area
+}
+
+.custom-dialog-container .mat-dialog-actions {
+  padding: 8px; // Customize padding if necessary
+}
+
+
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* prevents image distortion */
+  border: 2px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

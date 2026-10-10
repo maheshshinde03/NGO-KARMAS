@@ -1,0 +1,59 @@
+.ngo-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+.tabs-wrapper {
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        // padding: 10px 18px;
+        padding: 11px 40px;
+        margin-right: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        color: #6b7280;
+        border-radius: 8px 8px 0 0;
+        transition: all 0.2s ease;
+        background-color: #f3f4f6;
+
+        &:hover {
+            color: #111827;
+            background-color: #f3f4f6;
+        }
+
+        &.active {
+            color: #fff;
+            // background: linear-gradient(90deg, #36a8d7, #154761);
+            background: linear-gradient(90deg, #0f4b64, #154761);
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+        }
+    }
+}
+
+.tab-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

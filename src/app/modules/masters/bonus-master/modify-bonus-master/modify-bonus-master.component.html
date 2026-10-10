@@ -1,0 +1,7 @@
+<!-- Form for Bonus Master Create/Edit/View -->
+<app-form
+  [formConfig]="bonusMasterFormStructure"
+  [actiontype]="routeName"
+  [formData]="bonusMasterDetailsData.data"
+  (emitData)="handleSubmit($event)">
+</app-form>

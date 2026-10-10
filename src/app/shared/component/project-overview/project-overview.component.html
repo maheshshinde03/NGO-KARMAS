@@ -1,0 +1,69 @@
+<div class="card summary-card">
+    <div class="card-header pb-0">
+        <h4>NGO Details</h4>
+    </div>
+    <div class="card-body custom-padding-body">
+        <div class="task-bottom pb-3">
+            <h5 class="font-light">After DRS Complete Tax invoice will generate</h5>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 custom-width-1">
+                <div class="project-cost">
+                    <ul class="d-flex">
+                        @for( data of TaskSummaryData ; track data){
+                        <li class="card-hover">
+                            <div class="d-flex bg-light-{{data.class}} flex-column">
+                                <div class="flex-shrink-0 border-{{data.class}}">
+                                    <svg class="svg-w-24 stroke-{{data.class}}">
+                                        <use attr.xlink:href="assets/svg/iconly-sprite.svg#{{data.icon}}"></use>
+                                    </svg>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="f-w-500">{{data.task}}</h6>
+                                    <h4 class="f-w-700">{{data.number}}</h4>
+                                </div>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="card project-card">
+    <div class="card-header">
+        <h4>Invoice Overview</h4>
+    </div>
+    <div class="card-body pt-0">
+        <div class="row align-items-center">
+            <div class="col-5 custom-width">
+                <div class="progress progress-striped-primary">
+                    <div class="progress-bar" style="width: 55%"></div>
+                </div>
+                <div class="progress progress-striped-secondary">
+                    <div class="progress-bar" style="width: 60%"></div>
+                </div>
+                <div class="progress progress-striped-tertiary">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+            </div>
+            <div class="col-7 d-sm-none d-md-block">
+                <ul class="overview-details">
+                    <li class="d-flex align-items-center">
+                        <div class="circle-dot-primary"><span></span></div>
+                        <h5>15<span class="font-light ms-1">Signed</span></h5>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <div class="circle-dot-secondary"><span></span></div>
+                        <h5>62<span class="font-light ms-1">Manager Review</span></h5>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <div class="circle-dot-tertiary"><span></span></div>
+                        <h5>20<span class="font-light ms-1">Client Review</span></h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->

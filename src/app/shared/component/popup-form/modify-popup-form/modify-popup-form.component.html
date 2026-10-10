@@ -1,0 +1,14 @@
+
+<!-- <div class="container"> -->
+    <div class="header">
+        <span class="title">{{data.title}}</span>
+        <span class="close-btn" (click)="onCancel()">✖</span>
+    </div>
+    <app-form 
+        [formConfig]="data.formSearchGroupStructure" 
+        [actiontype]="data.route" 
+        (emitData)="handleSubmit($event)"
+        (selectValueChangeChange)="handleSelectValueChange($event)"
+        [formData]="data.formDetailsData.data" [isSubmit]="true">
+    </app-form>
+<!-- </div> -->

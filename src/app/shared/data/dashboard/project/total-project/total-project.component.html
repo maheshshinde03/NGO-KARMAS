@@ -1,0 +1,137 @@
+<!-- <div class="card total-project">
+    <div class="card-header border-dash-bottom">
+        <h4>{{isScorer ? 'Scorer' : 'User'}}</h4>
+        <div class="card-icon">
+            <h3 class="f-w-600">3051</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6 custom-width">
+                <div class="customer-chart">
+                    <apx-chart [series]="ProjectData.series" [chart]="ProjectData.chart"
+                        [plotOptions]="ProjectData.plotOptions" [legend]="ProjectData.legend"
+                        [dataLabels]="ProjectData.dataLabels" [grid]="ProjectData.grid" [colors]="ProjectData.colors"
+                        [responsive]="ProjectData.responsive">
+                    </apx-chart>
+                </div>
+            </div>
+            <div class="col-6">
+                <ul class="project-details">
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-primary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{isScorer ? 'Total Scorer' : 'Total User'}}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">321</span>
+                    </li>
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-secondary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{isScorer ? 'Top 10 Scorer' : 'News User'}}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">876</span>
+                    </li>
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{isScorer ? 'Most Active Scorer' : 'Actives User '}}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">645</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{isScorer ? 'Losing Scorer' : ' In Actives User '}}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">200</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between" *ngIf="!isScorer">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{' Blocks user '}}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">200</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="card total-project">
+    <div class="card-header border-dash-bottom">
+        <h4>{{ isScorer ? 'Scorer' : 'User' }}</h4>
+        <div class="card-icon">
+            <h3 class="f-w-600">{{ total }}</h3>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6 custom-width">
+                <div class="customer-chart">
+                    <!-- <apx-chart [series]="ProjectData.series" [chart]="ProjectData.chart"
+                        [plotOptions]="ProjectData.plotOptions" [legend]="ProjectData.legend"
+                        [dataLabels]="ProjectData.dataLabels" [grid]="ProjectData.grid" [colors]="ProjectData.colors"
+                        [responsive]="ProjectData.responsive">
+                    </apx-chart> -->
+                    <div class="customer-chart">
+                        <apx-chart [series]="ProjectData.series" [plotOptions]="ProjectData.plotOptions" [chart]="ProjectData.chart"
+                            [labels]="ProjectData.labels" [legend]="ProjectData.legend" [grid]="ProjectData.grid" 
+                            [dataLabels]="ProjectData.dataLabels" [colors]="ProjectData.colors" [responsive]="ProjectData.responsive">
+                        </apx-chart>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-6">
+                <ul class="project-details">
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-primary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{ isScorer ? 'Total Scorer' : 'Total User' }}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{ total }}</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-secondary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{ isScorer ? 'Top Scorer (This Month)' : 'New Users' }}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{ top }}</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{ isScorer ? 'Most Active Scorer' : 'Active Users' }}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{ active }}</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between" *ngIf="!isNgoLogin">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">{{ isScorer ? 'Losing Scorer' : 'Inactive Users' }}</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{ losing }}</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mt-3 justify-content-between" *ngIf="!isScorer && !isNgoLogin">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">Blocked Users</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{ blocked }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

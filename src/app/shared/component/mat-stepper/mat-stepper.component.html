@@ -1,0 +1,6 @@
+<mat-horizontal-stepper linear id="stepper" #stepper>
+    <mat-step *ngFor="let step of steps; let i = index" [completed]="step?.valid" [label]="step.label" [editable]="false">
+      <ng-container *ngTemplateOutlet="step.template"></ng-container>
+    </mat-step>
+  </mat-horizontal-stepper>
+  

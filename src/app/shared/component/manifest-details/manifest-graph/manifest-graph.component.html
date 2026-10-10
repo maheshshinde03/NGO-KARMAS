@@ -1,0 +1,35 @@
+<div class="card invest-card" (clickOutside)="clickOutside()">
+    <div class="card-header">
+        <h4>Total {{isPassenger ? 'Passengers' : 'Crew'}}</h4>
+    </div>
+    <div class="card-body p-0">
+        <div>
+            <apx-chart [series]="Investmentchart.series" [chart]="Investmentchart.chart"
+                [plotOptions]="Investmentchart.plotOptions" [stroke]="Investmentchart.stroke"
+                [colors]="Investmentchart.colors" [fill]="Investmentchart.fill" [grid]="Investmentchart.grid"
+                [yaxis]="Investmentchart.yaxis" [legend]="Investmentchart.legend"
+                [responsive]="Investmentchart.responsive" [tooltip]="Investmentchart.tooltip">
+            </apx-chart>
+        </div>
+        @if(passengerData){
+            <ul>
+                <!-- <li>
+                    <h5>Passenger</h5>
+                    <h6> {{passengerData.total_passenger}}</h6>
+                </li> -->
+                <li>
+                    <h5>Embarked</h5>
+                    <h6>{{passengerData.embark_status_count}}</h6>
+                </li>
+                <li>
+                    <h5>Disembarked</h5>
+                    <h6>{{passengerData.disembark_status_count}}</h6>
+                </li>
+                <li>
+                    <h5>Transit</h5>
+                    <h6>{{passengerData.transit_status_count}}</h6>
+                </li>
+            </ul>
+        }
+    </div>
+</div>

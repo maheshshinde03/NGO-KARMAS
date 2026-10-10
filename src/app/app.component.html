@@ -1,0 +1,12 @@
+<!-- <app-loader></app-loader> -->
+<!-- <div  *ngIf="isLoading$ | async">
+    <app-spinner></app-spinner>
+</div> -->
+
+<div class="loader-wrapper" *ngIf="isLoading$ | async">
+  <div class="loader-box">
+    <ng-lottie [options]="options"></ng-lottie>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-tap-to-top></app-tap-to-top>

@@ -1,0 +1,276 @@
+/* Base */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa, #eaeef3);
+}
+
+/* Layout */
+.ngo-page {
+    // display: flex;
+    // min-height: 100vh;
+    overflow: hidden;
+   
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: url("../../../assets/images/login/ngo_background_login.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 12px;
+}
+
+/* Left Visual Section */
+.ngo-image-section {
+    flex: 1.1;
+    /* slightly bigger than form for balance */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+}
+
+/* 3D Card */
+.ngo-image-card {
+    width: 95%;
+    max-width: 650px;
+    height: 85vh;
+    /* full screen fit */
+    background: linear-gradient(rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05)),
+        url('../../../assets/images/login/ngo_background_login.svg') center/cover no-repeat;
+    border-radius: 28px;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2),
+        inset 0 0 50px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.ngo-image-card:hover {
+    transform: rotateY(5deg) rotateX(2deg) scale(1.03);
+    box-shadow: 0 50px 90px rgba(0, 0, 0, 0.25),
+        inset 0 0 60px rgba(255, 255, 255, 0.3);
+}
+
+/* Overlay inside the card */
+.ngo-image-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    color: #111827;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Badge */
+.badge-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px);
+    width: fit-content;
+    margin-bottom: 24px;
+    color: #111827;
+    transition: all 0.3s ease;
+}
+
+.badge-pill:hover {
+    transform: scale(1.1);
+}
+
+/* Headline */
+.ngo-image-overlay h2 {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    color: #111827;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Paragraph */
+.ngo-image-overlay p {
+    font-size: 17px;
+    max-width: 220px;
+    line-height: 1.6;
+    color: #374151;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Right Form Section */
+.ngo-form-section {
+    flex: 1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+/* Glass Card */
+.glass-card {
+    width: 100%;
+    max-width: 1320px;
+    /* make large for balance */
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(22px);
+    border-radius: 28px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.ngo-card-header {
+    padding: 26px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.header-left h4 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.header-left small {
+    font-size: 14px;
+    color: #6b7280;
+    letter-spacing: 0.5px;
+}
+
+/* Back Button */
+.btn-back {
+    border: none;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-back:hover {
+    background: linear-gradient(135deg, #fcd34d, #fbbf24);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Body */
+.ngo-card-body {
+    padding: 36px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .ngo-page {
+        flex-direction: column;
+    }
+
+    .ngo-image-section,
+    .ngo-form-section {
+        flex: unset;
+        width: 100%;
+        padding: 20px;
+        height: auto;
+    }
+
+    .ngo-image-card {
+        width: 90%;
+        height: 300px;
+    }
+
+    .glass-card {
+        max-width: 95%;
+    }
+}
+
+/* Status Badge Base */
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: default;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Icon Circle */
+.status-badge .status-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* Approved */
+.status-approved {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+}
+
+/* Reapproval */
+.status-reapproval {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+}
+
+/* Rejected */
+.status-rejected {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+}
+
+/* Pending */
+.status-pending {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+}
+
+/* Default */
+.status-default {
+    background: #6b7280;
+    color: #fff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

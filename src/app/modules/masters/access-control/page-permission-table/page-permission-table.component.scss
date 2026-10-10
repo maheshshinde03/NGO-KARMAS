@@ -1,0 +1,189 @@
+/* Table container styling */
+.table-container {
+  // max-width: 1400px; /* Increased width */
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  transition: all 0.3s ease;
+}
+
+/* Permissions table styles */
+.permissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Table headers */
+th, td {
+  padding: 20px 28px;
+  text-align: center;
+  border: 1px solid #e1e1e1;
+  font-size: 16px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Table header background color */
+th {
+  background-color: #479d98;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+/* Row hover effect */
+tr:hover {
+  background-color: #f7f7f7;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Style for checkboxes inside table */
+input[type="checkbox"] {
+  margin: 0 8px;
+  transform: scale(1.2); /* Adjusted size */
+  transition: all 0.3s ease;
+}
+
+/* Label styling for checkboxes */
+label {
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for checkbox labels */
+label:hover {
+  background-color: #e0e0e0;
+}
+
+/* Select All label (header) styling */
+.select-all label {
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+}
+
+/* Disabled checkbox styles */
+input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Selected Permissions styling */
+.selected-permissions {
+  margin-top: 40px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  word-wrap: break-word;
+  max-height: 350px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  font-size: 20px;
+  color: #007bff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading i {
+  margin-right: 12px;
+  font-size: 28px;
+}
+
+.loading:hover {
+  color: #0056b3;
+}
+
+/* Error state */
+.error {
+  color: #d9534f;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error i {
+  margin-right: 12px;
+  font-size: 28px;
+}
+
+.error:hover {
+  color: #c9302c;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .permissions-table th, .permissions-table td {
+    font-size: 14px;
+    padding: 16px 20px;
+  }
+
+  .permissions-table {
+    font-size: 12px;
+  }
+
+  .table-container {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .permissions-table th, .permissions-table td {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .permissions-table {
+    font-size: 12px;
+  }
+
+  .table-container {
+    padding: 20px;
+  }
+}
+
+/* Add padding and margin for the "Select All for Page" checkbox */
+.page-select-all {
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px;
+}
+
+.permissions-table input[type="checkbox"] {
+  margin: 0 6px;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for checkbox labels */
+.permissions-table label:hover {
+  background-color: #e0e0e0;
+}

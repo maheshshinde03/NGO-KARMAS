@@ -1,0 +1,62 @@
+<div class="card invoice-card" (clickOutside)="clickOutside()">
+    <div class="card-header pb-0">
+        <h4>{{isPassenger ? 'Passengers' : 'Crew'}} Manifest</h4>
+        <!-- <span>{{'Click on the status buttons to download the data in Excel format.'}}</span> -->
+    </div>
+    <div class="card-body checkbox-checked">
+        <div class="datatable-wrapper datatable-loading no-footer searchable fixed-columns">
+            <div class="table-responsive">
+                <div class="datatable-container">
+                <table class="table datatable-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Count </th> 
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for( data of passengerDetails;track data){
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="flex-shrink-0">
+                                            <app-feathericon [icon]="'users'" class="feather me-1"></app-feathericon>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <a  [routerLink]="'/user/users-profile'">
+                                                <h6 class="f-w-500">{{data.objectName}}</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{data.total_length}}</td>
+                                <td>
+                                    <button class="btn edge-btn f-13 w-100 btn-light-{{data.class}}">{{data.statusShow}}</button>
+                                </td>
+                                <td>
+                                    <div class="flex-shrink-0">
+                                        <app-feathericon
+                                            (click)="downloadExcel(data)"
+                                            *ngIf="data.total_length > 0; else disabledIcon"
+                                            [icon]="'download'"
+                                            class="feather me-1 icon-enabled">
+                                        </app-feathericon>
+                                        <ng-template #disabledIcon>
+                                            <app-feathericon
+                                            [icon]="'download'"
+                                            class="feather me-1 icon-disabled">
+                                            </app-feathericon>
+                                        </ng-template>
+                                    </div>
+                                    <!-- <button (click)="downloadExcel(data)"><app-feathericon [icon]="'download'" class="feather me-1"></app-feathericon></button> -->
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

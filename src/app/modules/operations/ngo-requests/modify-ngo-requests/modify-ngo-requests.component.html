@@ -1,0 +1,241 @@
+<!-- <app-form [formConfig]="requestSearchGroupStructure" [actiontype]="routeName" (emitData)="handleSubmit($event)"
+    [formData]="this.requestDetailsData.data" (photoBase64Uploaded)="handleFileUpload($event)"></app-form>
+
+
+<div class="row" *ngIf="routeName === 'view'">
+    <div style="display: flex; justify-content: end;">
+        <button  class="btn btn-danger w-10 mr-2" (click)="handleCorssAction()" style="margin-right: 20px;">Reject</button>
+        <button  class="btn btn-success w-10 mr-2" (click)="handleCheckAction()" style="margin-right: 20px;">Approve</button>
+        <button  class="btn btn-danger w-10 mr-2" (click)="handleCancelAction()">Cancel</button>
+    </div>
+</div> -->
+
+<!-- <div *ngIf="routeId" style="display: flex; justify-content: end;margin-bottom: 5px;">
+    <button class="btn btn-primary w-10" (click)="openRequestNgoPopup()">Assign NGO</button>
+</div> -->
+
+
+<div class="ngo-container">
+
+    <!-- Show Tabs only in EDIT mode -->
+    <ng-container *ngIf="routeName === 'edit' || routeName === 'view'; else stepperOnly">
+
+        <!-- Tabs Header -->
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li *ngFor="let tab of tabs; let i = index" [class.active]="selectedTab === i"
+                    (click)="selectedTab = i">
+                    {{ tab.label }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+            <ng-container [ngSwitch]="selectedTab">
+                <ng-container *ngSwitchCase="0">
+                    <!-- <ng-container *ngTemplateOutlet="ngoProfile"></ng-container> -->
+                    <app-form [formConfig]="requestSearchGroupStructure" [actiontype]="routeName"
+                        (emitData)="handleSubmit($event)" [formData]="this.requestDetailsData.data"
+                        (photoBase64Uploaded)="handleFileUpload($event)"
+                        (selectValueChangeChange)="handleSelectValueChange($event)"></app-form>
+
+                    <!-- <ng-container *ngIf="routeId && routeName !== 'view'">
+                        <app-table [jsonData]="ngoDetailsList"
+                            (handleAssignAction)="handleAssignAction($event)"></app-table>
+                    </ng-container> -->
+                </ng-container>
+
+                <ng-container *ngSwitchCase="1">
+                    <ng-container *ngTemplateOutlet="requestMedia"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                    <ng-container *ngTemplateOutlet="requestedDoc"></ng-container>
+                </ng-container>
+
+
+            </ng-container>
+        </div>
+
+    </ng-container>
+
+    <!-- Stepper view for Create or View mode -->
+    <ng-template #stepperOnly>
+        <app-form [formConfig]="requestSearchGroupStructure" [actiontype]="routeName" (emitData)="handleSubmit($event)"
+            [formData]="this.requestDetailsData.data" (photoBase64Uploaded)="handleFileUpload($event)"
+            (selectValueChangeChange)="handleSelectValueChange($event)"></app-form>
+
+        <ng-container *ngIf="routeId && routeName !== 'view'">
+            <app-table [jsonData]="ngoDetailsList" (handleAssignAction)="handleAssignAction($event)"></app-table>
+        </ng-container>
+    </ng-template>
+</div>
+
+
+<ng-template #requestMedia>
+    <div class="file-content">
+        <div class="card"></div>
+        <div class="card-header media-container p-3">
+            <!-- Header -->
+            <div class=" d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-semibold">Media Library</h4>
+                <button class="btn btn-primary d-flex align-items-center" (click)="openUploadModal()">
+                    <i class="fa fa-upload me-2"></i> Upload Media
+                </button>
+            </div>
+
+            <div class="card-body file-manager">
+                <!-- <h5 class="mb-2">Quick Access</h5> -->
+                <ul class="quick-file d-flex flex-row flex-wrap">
+                    @for (file of Quickdata; track file) {
+                    <li (click)="filterByType(file.media_type)">
+                        <div class="quick-box">
+                            <i class="fa {{ file.icon }} font-{{ file.iconColor }}"></i>
+                        </div>
+                        <h6>{{ file.folderName }}</h6>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <!-- Grid View -->
+            <div class="row g-3 card-body">
+                <div class="col-6 col-md-3 col-lg-2" *ngFor="let media of filteredMedia"
+                    (click)="openPreviewModal(media)">
+                    <div class="card shadow-sm border-0 rounded-3 media-card hover-scale">
+                        <img *ngIf="media.media_type === 'image'" [src]="media.media_url" alt="Image"
+                            class="card-img-top rounded-top-3" />
+                        <video *ngIf="media.media_type === 'video'" [src]="media.media_url"
+                            class="card-img-top rounded-top-3" muted></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Upload Modal -->
+<ng-template #uploadModal let-modal>
+    <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Upload Media</h5>
+        <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+
+    <div class="modal-body">
+        <!-- Drag & Drop Upload Area -->
+        <div class="upload-box border border-dashed rounded-3 p-4 text-center" [class.dragover]="isDragOver"
+            (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+            <i class="fa fa-cloud-upload-alt upload-icon mb-3"></i>
+            <p class="mb-2 fw-semibold">Drag & drop files here</p>
+            <p class="text-muted mb-3">or <span class="text-primary" (click)="fileInput.click()">browse</span></p>
+            <input #fileInput type="file" multiple accept="image/*,video/*" (change)="onFileChange($event)" hidden />
+        </div>
+        <div class="file-preview mt-3">
+            <div class="row g-2">
+                <div class="col-4 col-md-3 col-lg-2" *ngFor="let item of filesToUpload; let i = index">
+                    <div class="preview-card position-relative rounded-3">
+                        <!-- Image preview -->
+                        <img *ngIf="item.file.type.startsWith('image')" [src]="item.preview"
+                            class="img-fluid rounded-top-3" />
+
+                        <!-- Video preview -->
+                        <video *ngIf="item.file.type.startsWith('video')" [src]="item.preview" muted autoplay loop
+                            class="img-fluid rounded-top-3"></video>
+
+                        <!-- Remove button -->
+                        <button type="button" class="btn-close remove-btn" (click)="removeFile(i)"></button>
+
+                        <!-- Progress bar -->
+                        <div *ngIf="item.progress !== undefined && item.progress < 100"
+                            class="progress upload-progress">
+                            <div class="progress-bar" role="progressbar" [style.width.%]="item.progress"></div>
+                        </div>
+                    </div>
+                    <p class="text-truncate mt-1 mb-0">{{ item.file.name }}</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn btn-outline-secondary me-2" (click)="modal.dismiss()">Cancel</button>
+            <button type="button" class="btn btn-primary" [disabled]="isUploading || !filesToUpload.length"
+                (click)="uploadMedia()">
+                <span *ngIf="isUploading" class="spinner-border spinner-border-sm me-2"></span>
+                Upload
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- Preview Modal -->
+<ng-template #previewModal let-modal>
+    <div class="modal-header border-0">
+        <h5 class="modal-title">{{ selectedMedia?.media_type | titlecase }} Preview</h5>
+        <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body text-center">
+        <img *ngIf="selectedMedia?.media_type === 'image'" [src]="selectedMedia?.media_url"
+            class="img-fluid rounded-3" />
+        <video *ngIf="selectedMedia?.media_type === 'video'" [src]="selectedMedia?.media_url"
+            class="img-fluid rounded-3" controls autoplay></video>
+    </div>
+</ng-template>
+
+
+<ng-template #requestedDoc let-documents="reqDocuments">
+    <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4" *ngFor="let doc of reqDocuments">
+        <div class="document-card shadow-sm h-100">
+
+            <!-- Document Preview -->
+            <div class="doc-preview">
+
+                <!-- If Uploaded -->
+                <img *ngIf="doc.is_uploaded" [src]="doc.media_url" class="img-fluid" />
+
+                <!-- If Not Uploaded -->
+                <div *ngIf="!doc.is_uploaded" class="waiting-upload">
+                    <i class="bi bi-cloud-upload"></i>
+                    <p>Waiting for upload from user</p>
+                </div>
+
+            </div>
+
+            <!-- Document Info -->
+            <div class="doc-info">
+
+                <h6 class="doc-title">
+                    {{ doc.document_type_name }}
+                </h6>
+
+                <!-- File Name -->
+                <p *ngIf="doc.is_uploaded" class="doc-file">
+                    {{ doc.file_name }}
+                </p>
+
+                <!-- Buttons -->
+                <div *ngIf="doc.is_uploaded" class="doc-actions">
+                    <a [href]="doc.media_url" target="_blank" class="btn btn-sm btn-primary">
+                        View
+                    </a>
+
+                    <a (click)="downloadFile(doc.s3_url, doc.file_name)" download
+                        class="btn btn-sm btn-outline-secondary">
+                        Download
+                    </a>
+                </div>
+
+                <!-- Waiting Status -->
+                <span class="status-badge" [ngClass]="doc.is_uploaded ? 'uploaded' : 'pending'">
+                    {{ doc.is_uploaded ? 'Uploaded' : 'Waiting for Upload' }}
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+</ng-template>

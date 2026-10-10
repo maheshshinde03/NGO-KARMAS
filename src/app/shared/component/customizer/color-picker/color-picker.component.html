@@ -1,0 +1,10 @@
+<ul class="layout-grid">
+    <input id="ColorPicker1" [(ngModel)]="primary_color" type="color" value="#43B9B2">
+    <input id="ColorPicker2" class="ms-2" [(ngModel)]="secondary_color" type="color" value="#FE6A49">
+    <ul class="layout-grid unlimited-color-layout">
+        <button type="button" class="color-apply-btn btn btn-primary color-apply-btn"
+            (click)="applyColor()">Apply</button>
+        <button type="button" class="color-apply-btn btn btn-primary color-apply-btn ms-2"
+            (click)="resetColor()">Reset</button>
+    </ul>
+</ul>

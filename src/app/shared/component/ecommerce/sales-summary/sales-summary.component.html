@@ -1,0 +1,38 @@
+<div class="card sales-summary" (clickOutside)="clickOutside()">
+    <div class="card-header">
+        <h4>Summary</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="current-sale-container order-container">
+            <div class="overview-wrapper">
+                <apx-chart [series]="SalesSummary1.series" [chart]="SalesSummary1.chart" [labels]="SalesSummary1.labels"
+                    [plotOptions]="SalesSummary1.plotOptions" [colors]="SalesSummary1.colors" [annotations]="SalesSummary1.annotations"
+                    [grid]="SalesSummary1.grid" [stroke]="SalesSummary1.stroke" [xaxis]="SalesSummary1.xaxis"
+                    [yaxis]="SalesSummary1.yaxis" [fill]="SalesSummary1.fill" [legend]="SalesSummary1.legend"
+                    [tooltip]="SalesSummary1.tooltip" [responsive]="SalesSummary1.responsive">
+                </apx-chart>
+            </div>
+            <div class="back-bar-container">
+                <div>
+                    <apx-chart [series]="SalesSummary2.series" [chart]="SalesSummary2.chart"
+                        [plotOptions]="SalesSummary2.plotOptions" [grid]="SalesSummary2.grid"
+                        [colors]="SalesSummary2.colors" [dataLabels]="SalesSummary2.dataLabels"
+                        [stroke]="SalesSummary2.stroke" [xaxis]="SalesSummary2.xaxis" [yaxis]="SalesSummary2.yaxis"
+                        [fill]="SalesSummary2.fill" [tooltip]="SalesSummary2.tooltip" [states]="SalesSummary2.states"
+                        [responsive]="SalesSummary2.responsive">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

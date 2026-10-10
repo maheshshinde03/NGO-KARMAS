@@ -1,0 +1,57 @@
+<div class="ngo-page">
+
+    <!-- Left Visual Section -->
+    <!-- <div class="ngo-image-section">
+    <div class="ngo-image-card">
+      <div class="ngo-image-overlay">
+        <span class="badge-pill">NGO PLATFORM</span>
+        <h2>Build Trust. <br />Create Impact.</h2>
+        <p>
+          Join our verified NGO network and connect with donors,
+          volunteers, and institutions worldwide.
+        </p>
+      </div>
+    </div>
+  </div> -->
+
+    <!-- Right Form Section -->
+    <div class="ngo-form-section">
+        <div class="ngo-card glass-card">
+
+            <div class="ngo-card-header d-flex justify-content-between align-items-center">
+                <div class="header-left">
+                    <h4>NGO Verification</h4>
+                    <small>Secure & verified onboarding process</small>
+                </div>
+
+                <div class="header-right d-flex gap-2">
+                    <button class="btn btn-warning btn-sm" (click)="onNeedReapproval()">
+                        Need Reapproval
+                    </button>
+
+                    <button class="btn btn-danger btn-sm" (click)="onReject()">
+                        Registration Rejected
+                    </button>
+
+                    <button class="btn btn-success btn-sm" (click)="onApprove()">
+                        Registration Approved
+                    </button>
+
+                    <!-- <button class="btn btn-secondary btn-sm" (click)="onViewHistory()">
+                        View History
+                    </button> -->
+                </div>
+
+            </div>
+
+            <div class="ngo-card-body">
+                <app-form [formConfig]="ngoRegistrationFormStructure" [formData]="ngoDetailsData.data"
+                    (emitData)="handleSubmit($event)" (selectValueChangeChange)="selectValueChange($event)"
+                    (photoBase64Uploaded)="handleFileUpload($event)" [actiontype]="routeName">
+                </app-form>
+            </div>
+
+        </div>
+    </div>
+
+</div>

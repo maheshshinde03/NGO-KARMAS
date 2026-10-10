@@ -1,0 +1,59 @@
+<div class="card" (clickOutside)="clickOutside()">
+    <div class="card-header">
+        <h4>Request Overview</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body category">
+        <div class="row">
+            <div class="col-xl-6 col-6">
+                <ul>
+                    <li class="d-flex align-items-center bg-light card-hover">
+                        <div class="flex-shrink-0">
+                            <div class="circle-dot-primary"> <span></span></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="f-w-500">Men & Women Fashion</h6><span class="f-13 font-light">13.5k Products
+                                Sold</span>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center bg-light card-hover">
+                        <div class="flex-shrink-0">
+                            <div class="circle-dot-secondary"> <span></span></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="f-w-500">Home Furniture</h6>
+                            <span class="f-13 font-light">10.3k Products
+                               Sold</span>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center bg-light card-hover">
+                        <div class="flex-shrink-0">
+                            <div class="circle-dot-tertiary"> <span></span></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="f-w-500">Mobiles & Computers</h6><span class="f-13 font-light">22.4k Products
+                                Sold</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-6 col-6">
+                <div id="category">
+                    <apx-chart [series]="categoryChart.series" [chart]="categoryChart.chart"
+                        [plotOptions]="categoryChart.plotOptions" [stroke]="categoryChart.stroke"
+                        [colors]="categoryChart.colors" [responsive]="categoryChart.responsive">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

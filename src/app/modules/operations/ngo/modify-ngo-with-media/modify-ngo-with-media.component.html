@@ -1,0 +1,397 @@
+<div class="ngo-container">
+
+    <!-- Show Tabs only in EDIT mode -->
+    <ng-container *ngIf="routeName === 'edit'; else stepperOnly">
+
+        <!-- Tabs Header -->
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li *ngFor="let tab of tabs; let i = index" [class.active]="selectedTab === i"
+                    (click)="selectedTab = i">
+                    {{ tab.label }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+            <ng-container [ngSwitch]="selectedTab">
+                <ng-container *ngSwitchCase="0">
+                    <!-- <ng-container *ngTemplateOutlet="ngoProfile"></ng-container> -->
+                    <app-mat-stepper [steps]="jsonData" #stepperRef></app-mat-stepper>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="1">
+                    <ng-container *ngTemplateOutlet="ngoMedia"></ng-container>
+                </ng-container>
+
+                 <ng-container *ngSwitchCase="2">
+                    <ng-container *ngTemplateOutlet="requestDocuments"></ng-container>
+                </ng-container>
+
+            </ng-container>
+        </div>
+
+    </ng-container>
+
+    <!-- Stepper view for Create or View mode -->
+    <ng-template #stepperOnly>
+        <app-mat-stepper [steps]="jsonData" #stepperRef></app-mat-stepper>
+    </ng-template>
+</div>
+
+<!-- ============================= -->
+<!--     Define Templates Below    -->
+<!-- ============================= -->
+
+<ng-template #ngoProfile>
+    <app-form [formConfig]="ngoTypeSearchGroupStructure" [actiontype]="routeName" [isNext]="true"
+        (emitData)="handleSubmit($event,'ngProfile')" [formData]="ngoDetailsData.data"
+        (selectValueChangeChange)="selectValueChange($event)" (photoBase64Uploaded)="handleFileUpload($event)">
+    </app-form>
+</ng-template>
+
+<ng-template #ngoOfficeBearers>
+    <div class="custom-row mt-4">
+        <div class="shipmentContainer">
+            <div class="custom-row">
+                <app-popup-form (handleCreateAction)="handleCreateAction('officeBearers')"
+                    (handleDeleteActionWithAllData)="handleDeleteAction('officeBearers',$event)"
+                    [formDetailsData]="nGOOfficeBearersDetailsTable">
+                </app-popup-form>
+            </div>
+            <div class="custom-row" style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <button type="submit" (click)="handleSubmit('tp','addressGst')" class="btn btn-primary">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #sectorsOfWorkDetails>
+    <div class="custom-row mt-4">
+        <div class="shipmentContainer">
+            <div class="custom-row">
+                <app-popup-form (handleCreateAction)="handleCreateAction('sectorOfWorkDetails')"
+                    (handleDeleteActionWithAllData)="handleDeleteAction('sectorOfWorkDetails',$event)"
+                    [formDetailsData]="sectorOfWorkDetailsTable">
+                </app-popup-form>
+            </div>
+            <div class="custom-row" style="display: flex; justify-content: flex-end; margin-top: 1rem;"
+                *ngIf="routeName !== 'view'">
+                <button type="submit" (click)="handleSubmit('tp','sectorsOfWorkDetails')" class="btn btn-primary">
+                    {{ routeId ? 'Update' : 'Submit' }}
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #ngoMedia>
+    <!-- Example extra tab -->
+    <!-- <div class="custom-row mt-4">
+    <div class="shipmentContainer">
+      <h4>Media Section</h4>
+      <p>Upload or manage media files related to the NGO here.</p>
+    </div>
+  </div> -->
+
+    <!-- **************************************** -->
+    <!-- <div class="file-content">
+        <div class="card">
+            <div class="card-header d-md-block d-none">
+                <div class="d-md-flex d-sm-block align-items-center">
+                    <form class="form-inline">
+                        <div class="form-group d-flex mb-0 align-items-center">
+                            <i class="fa fa-search"></i>
+                            <input class="form-control-plaintext" type="text" placeholder="Search..." />
+                        </div>
+                    </form>
+                    <div class="flex-grow-1 text-end">
+                        <form class="d-inline-flex">
+                            <div style="height: 0px; width: 0px; overflow: hidden">
+                                <input type="file" />
+                            </div>
+                            <button class="btn btn-outline-primary ms-2 upload">
+                                <app-feathericon [icon]="'upload'" class="feather stroke-primary"></app-feathericon>
+                                Upload
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body file-manager">
+                <h5 class="mb-2">Quick Access</h5>
+                <ul class="quick-file d-flex flex-row flex-wrap">
+                    @for (file of Quickdata; track file) {
+                    <li (click)="filterMedia(file.folderName)">
+                        <div class="quick-box">
+                            <i class="fa {{ file.icon }} font-{{ file.iconColor }}"></i>
+                        </div>
+                        <h6>{{ file.folderName }}</h6>
+                    </li>
+                    }
+                </ul>
+
+                <div *ngIf="filteredMedia.length > 0" class="media-gallery mt-4">
+                    <h5 class="mb-3">{{ selectedMediaType | titlecase }}</h5>
+                    <div class="media-grid">
+                        <ng-container *ngFor="let media of filteredMedia">
+                            <div class="media-card" (click)="openModal(media)">
+                                <img *ngIf="media.media_type === 'image'" [src]="media.media_url"
+                                    [alt]="media.media_type" />
+                                <video *ngIf="media.media_type === 'video'" [src]="media.media_url" muted
+                                    preload="metadata"></video>
+                                <div class="overlay">
+                                    <i class="fa" [ngClass]="{
+                    'fa-image': media.media_type === 'image',
+                    'fa-play': media.media_type === 'video',
+                    'fa-music': media.media_type === 'audio'
+                  }"></i>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #mediaModal let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title">{{ selectedMediaType | titlecase }} Preview</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img *ngIf="selectedMedia?.media_type === 'image'" [src]="selectedMedia?.media_url"
+                class="img-fluid rounded" />
+            <video *ngIf="selectedMedia?.media_type === 'video'" [src]="selectedMedia?.media_url" controls
+                class="img-fluid rounded"></video>
+        </div>
+    </ng-template> -->
+
+    <div class="file-content">
+        <div class="card"></div>
+        <div class="card-header media-container p-3">
+            <!-- Header -->
+            <div class=" d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-semibold">Media Library</h4>
+                <button class="btn btn-primary d-flex align-items-center" (click)="openUploadModal()">
+                    <i class="fa fa-upload me-2"></i> Upload Media
+                </button>
+            </div>
+
+            <div class="card-body file-manager">
+                <!-- <h5 class="mb-2">Quick Access</h5> -->
+                <ul class="quick-file d-flex flex-row flex-wrap">
+                    @for (file of Quickdata; track file) {
+                    <li (click)="filterByType(file.media_type)">
+                        <div class="quick-box">
+                            <i class="fa {{ file.icon }} font-{{ file.iconColor }}"></i>
+                        </div>
+                        <h6>{{ file.folderName }}</h6>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <!-- Grid View -->
+            <!-- <div class="row g-3 card-body">
+                <div class="col-6 col-md-3 col-lg-2" *ngFor="let media of filteredMedia"
+                    (click)="openPreviewModal(media)">
+                    <div class="card shadow-sm border-0 rounded-3 media-card hover-scale">
+                        <img *ngIf="media.media_type === 'image'" [src]="media.media_url" alt="Image"
+                            class="card-img-top rounded-top-3" />
+                        <video *ngIf="media.media_type === 'video'" [src]="media.media_url"
+                            class="card-img-top rounded-top-3" muted></video>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row g-3 card-body">
+                <div class="col-6 col-md-3 col-lg-2" *ngFor="let media of filteredMedia; let i = index">
+
+                    <div class="card shadow-sm border-0 rounded-3 media-card hover-scale position-relative">
+
+                        <!-- Remove Button -->
+                        <button type="button" class="btn btn-danger btn-sm remove-btn"
+                            (click)="removeMedia(media, i); $event.stopPropagation()">
+                            ✖
+                        </button>
+
+                        <!-- Image -->
+                        <img *ngIf="media.media_type === 'image'" [src]="media.media_url" alt="Image"
+                            class="card-img-top rounded-top-3" (click)="openPreviewModal(media)" />
+
+                        <!-- Video -->
+                        <video *ngIf="media.media_type === 'video'" [src]="media.media_url"
+                            class="card-img-top rounded-top-3" muted (click)="openPreviewModal(media)">
+                        </video>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Upload Modal -->
+    <ng-template #uploadModal let-modal>
+        <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">Upload Media</h5>
+            <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Drag & Drop Upload Area -->
+            <div class="upload-box border border-dashed rounded-3 p-4 text-center" [class.dragover]="isDragOver"
+                (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+                <i class="fa fa-cloud-upload-alt upload-icon mb-3"></i>
+                <p class="mb-2 fw-semibold">Drag & drop files here</p>
+                <p class="text-muted mb-3">or <span class="text-primary" (click)="fileInput.click()">browse</span></p>
+                <input #fileInput type="file" multiple accept="image/*,video/*" (change)="onFileChange($event)"
+                    hidden />
+            </div>
+
+            <!-- Selected Files Preview -->
+            <!-- <div *ngIf="filesToUpload.length > 0" class="file-preview mt-3">
+                <div class="row g-2">
+                    <div class="col-4 col-md-3 col-lg-2" *ngFor="let file of filesToUpload; let i = index">
+                        <div class="preview-card rounded-3 position-relative">
+                            <img *ngIf="file.type.startsWith('image')" [src]="file.preview" alt="image"
+                                class="img-fluid rounded-top-3" />
+                            <video *ngIf="file.type.startsWith('video')" [src]="file.preview" muted preload="metadata"
+                                class="img-fluid rounded-top-3"></video>
+                            <button type="button" class="btn-close remove-btn" (click)="removeFile(i)"></button>
+                        </div>
+                        <p class="text-truncate mt-1 mb-0">{{ file.name }}</p>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="file-preview mt-3">
+                <div class="row g-2">
+                    <div class="col-4 col-md-3 col-lg-2" *ngFor="let item of filesToUpload; let i = index">
+                        <div class="preview-card position-relative rounded-3">
+                            <!-- Image preview -->
+                            <img *ngIf="item.file.type.startsWith('image')" [src]="item.preview"
+                                class="img-fluid rounded-top-3" />
+
+                            <!-- Video preview -->
+                            <video *ngIf="item.file.type.startsWith('video')" [src]="item.preview" muted autoplay loop
+                                class="img-fluid rounded-top-3"></video>
+
+                            <!-- Remove button -->
+                            <button type="button" class="btn-close remove-btn" (click)="removeFile(i)"></button>
+
+                            <!-- Progress bar -->
+                            <div *ngIf="item.progress !== undefined && item.progress < 100"
+                                class="progress upload-progress">
+                                <div class="progress-bar" role="progressbar" [style.width.%]="item.progress"></div>
+                            </div>
+                        </div>
+                        <p class="text-truncate mt-1 mb-0">{{ item.file.name }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="button" class="btn btn-outline-secondary me-2" (click)="modal.dismiss()">Cancel</button>
+                <button type="button" class="btn btn-primary" [disabled]="isUploading || !filesToUpload.length"
+                    (click)="uploadMedia()">
+                    <span *ngIf="isUploading" class="spinner-border spinner-border-sm me-2"></span>
+                    Upload
+                </button>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <!-- Preview Modal -->
+    <ng-template #previewModal let-modal>
+        <div class="modal-header border-0">
+            <h5 class="modal-title">{{ selectedMedia?.media_type | titlecase }} Preview</h5>
+            <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img *ngIf="selectedMedia?.media_type === 'image'" [src]="selectedMedia?.media_url"
+                class="img-fluid rounded-3" />
+            <video *ngIf="selectedMedia?.media_type === 'video'" [src]="selectedMedia?.media_url"
+                class="img-fluid rounded-3" controls autoplay></video>
+        </div>
+    </ng-template>
+
+</ng-template>
+
+
+
+<ng-template #requestDocuments>
+    <div class="card p-3">
+        <h5 class="mb-3">NGO Request Document Category</h5>
+
+        <form [formGroup]="requestDocumentForm">
+
+            <div formArrayName="documents">
+                <div *ngFor="let row of documents.controls; let i = index" [formGroupName]="i"
+                    class="row align-items-end mb-3 border p-3 rounded">
+
+                    <!-- Category -->
+                    <div class="col-md-4">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" formControlName="category_id">
+                            <option value="">Select Category</option>
+                            <option *ngFor="let cat of categoryList" [value]="cat.ngo_field_id">
+                                {{ cat.field_name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Document Type -->
+                    <div class="col-md-4">
+                        <label class="form-label">Document Type</label>
+                        <select class="form-select" formControlName="document_type_id">
+                            <option value="">Select Document</option>
+                            <option *ngFor="let doc of documentTypeList" [value]="doc.document_type_id">
+                                {{ doc.document_type }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Mandatory -->
+                    <div class="col-md-2">
+                        <label class="form-label">Mandatory</label>
+                        <select class="form-select" formControlName="is_mandatory">
+                            <option [value]="1">Yes</option>
+                            <option [value]="0">No</option>
+                        </select>
+                    </div>
+
+                    <!-- Remove Button -->
+                    <div class="col-md-2 text-end">
+                        <button type="button" class="btn btn-danger" (click)="removeRow(i)">
+                            Remove
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Add Row Button -->
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary" (click)="addRow()">
+                    + Add Row
+                </button>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-end">
+                <button class="btn btn-success" (click)="submitForm()">
+                    Submit
+                </button>
+            </div>
+
+        </form>
+    </div>
+</ng-template>

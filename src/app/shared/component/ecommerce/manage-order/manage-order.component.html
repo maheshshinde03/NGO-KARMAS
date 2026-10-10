@@ -1,0 +1,42 @@
+<div class="card" (clickOutside)="clickOutside()">
+    <div class="card-header pb-0">
+        <h4>Manage NGO</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body manage-order">
+        <table class="table">
+            <tbody>
+                @for( data of ManageOrder; track data){
+                <tr>
+                    <td>
+                        <div class="d-flex gap-2 align-items-center">
+                            <div class="flex-shrink-0">
+                                <img class="img-fluid img-42 b-r-10" src="{{ data.img}}" alt="img">
+                            </div>
+                            <div class="flex-grow-1">
+                                <a [routerLink]="'/user/users-profile'">
+                                    <h6 class="f-w-500">{{data.name}}</h6><span class="f-13">{{ data.email}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-block text-end">
+                            <h6 class="f-w-500">{{data.price}}</h6><span class="f-w-500">{{data.sale}} Sale</span>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

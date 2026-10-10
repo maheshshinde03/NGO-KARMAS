@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h2 class="mt-3 mb-3">Select NGOs</h2>
+
+    <!-- Search Box -->
+    <input type="text" [(ngModel)]="searchText" (keyup)="filterNgos()" placeholder="Search NGOs..." class="search-box" />
+
+    <!-- NGO Selection List -->
+    <div class="ngo-list mt-3">
+        <div *ngFor="let ngo of filteredNgos" class="ngo-item" (click)="toggleSelection(ngo)">
+          <input type="checkbox" [checked]="isNgoSelected(ngo.ngo_id)" />
+          <span>{{ ngo.ngo_name }}</span>
+        </div>
+      </div>
+      
+      <!-- Actions -->
+      <div class="actions">
+        <button (click)="close()">Cancel</button>
+        <button [disabled]="requestNgoList.length === 0" (click)="dialogRef.close(requestNgoList)">Select</button>
+      </div>
+</div>
+

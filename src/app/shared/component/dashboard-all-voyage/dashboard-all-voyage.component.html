@@ -1,0 +1,50 @@
+<div class="card invoice-card" (clickOutside)="clickOutside()">
+    <div class="card-header pb-0">
+        <h4>Port Calls</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" (click)="handleListAction()">Port List</a>
+                <a class="dropdown-item" (click)="handleCreateAction()">Create port registration</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body invoice-table checkbox-checked">
+        <div class="datatable-wrapper datatable-loading no-footer searchable fixed-columns">
+            <div class="table-responsive">
+                <div class="datatable-container">
+                <table class="table datatable-table">
+                        <thead>
+                            <tr>
+                                <th>Port Call</th>
+                                <th>Ship name</th>
+                                <th>ETA</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for( data of InvoiceData;track data){
+                            <tr>
+                                <td>{{data?.port_call_no}}</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="flex-grow-1"><a>
+                                                <h6 class="f-w-500">{{data?.ship_name}}</h6>
+                                            </a><span class="font-light f-w-400 f-13">{{data?.berth_name}}</span></div>
+                                    </div>
+                                </td>
+                                <td>{{ data?.expected_arrival_datetime | date:'d MMMM yyyy' }}</td>
+                                <td>
+                                    <button class="btn edge-btn f-13 w-100 btn-light-primary">{{data.status_name}}</button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

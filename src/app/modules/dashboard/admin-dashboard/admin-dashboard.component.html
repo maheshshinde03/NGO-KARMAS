@@ -1,0 +1,49 @@
+<div class="container-fluid ecommerce-dashboard default-dashboard project-dashboard">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <app-dashboard-chart [data]="TotalSaleChart"
+                        (click)="dashboardClick('case1')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-6">
+                    <app-dashboard-chart [data]="TotalSaleChart1"
+                        (click)="dashboardClick('case2')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-6">
+                    <app-dashboard-chart [data]="TotalSaleChart2"
+                        (click)="dashboardClick('case3')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-3">
+                    <app-dashboard-chart [data]="TotalSaleChart2"
+                        (click)="dashboardClick('case4')"></app-dashboard-chart>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <app-project-overview [drsDashboard]="drsDashboard"></app-project-overview>
+            </div>
+            <div class="col-sm-4 col-md-8">
+                <app-total-invoice [data]="ProjectData" [invoiceDashboard]="invoiceDashboard"></app-total-invoice>
+            </div>
+            <div class="col-sm-6 col-xl-3 order-1 order-xl-0">
+                <app-schedule-time></app-schedule-time>
+            </div>
+            <div class="col-sm-5 col-md-5">
+                <app-dashboard-all-voyage [voyageDetails]="voyageDetails"></app-dashboard-all-voyage>
+            </div>
+        </div> -->
+    </div>
+</div>
+<ng-template #DashboardDataModal let-modal let-rowData="DashboardData">
+    <div class="modal-content">
+        <div class="modal-header mb-3">
+            <h4 class="modal-title" id="exampleModalLabel">{{dashboardHeader}}</h4>
+            <button class="btn-close" type="button" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+            <app-table [jsonData]="DashboardData"></app-table>
+        </div>
+    </div>
+</ng-template>

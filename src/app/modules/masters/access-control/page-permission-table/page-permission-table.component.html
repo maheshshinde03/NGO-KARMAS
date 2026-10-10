@@ -1,0 +1,78 @@
+<div *ngIf="loading" class="loading">
+  <i class="fa fa-spinner fa-spin"></i> Loading...
+</div>
+<div *ngIf="error" class="error">
+  <i class="fa fa-exclamation-triangle"></i> {{ error }}
+</div>
+
+<app-form 
+  [formConfig]="roleSearchGroupStructure" 
+  (selectValueChangeChange)="handleSelectValueChange($event)" [isButtonHidden]="true">
+</app-form>
+
+<div class="d-flex justify-content-end">
+  <div class="custom-right-margin">
+      <button class="btn btn-primary m-3" style="margin-right: 15px;" (click)="permissionSubmit()">
+          <app-feathericon [icon]="'check-circle'" class="m-r-5"></app-feathericon>
+          Submit
+      </button>
+  </div>
+</div>
+
+<div *ngIf="!loading && !error" class="table-container">
+  <table class="permissions-table">
+    <thead>
+      <tr>
+        <!-- Add Select All for Rows -->
+        <th>
+          <input 
+            type="checkbox" 
+            [checked]="isAllRowsSelected()" 
+            (change)="onSelectAllRowsChange($event)" 
+          />
+        </th>
+        <th>Page Name</th>
+        <th *ngFor="let permission of allPermissions">
+          <div class="select-all">
+            <label>
+              <input
+                type="checkbox"
+                [checked]="selectAllPermissions[permission]"
+                (change)="onSelectAllChange(permission, $event)"
+              />
+              {{ permission }}
+            </label>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let page of pages">
+        <!-- Row Select Checkbox -->
+        <td>
+          <input 
+            type="checkbox" 
+            [checked]="selectedRows.includes(page.page_id)"
+            (change)="onRowSelectChange(page.page_id, $event)"
+          />
+        </td>
+        <td>{{ page.page_name }}</td>
+        <td *ngFor="let permission of allPermissions">
+          <label>
+            <input
+              type="checkbox"
+              [checked]="selectedPermissions[page.page_id]?.includes(permission)"
+              (change)="onPermissionChange(page.page_id, permission, $event)"
+              [disabled]="!page.permissions.includes(permission)" 
+            />
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Optional: Show selected permissions -->
+<!-- <div class="selected-permissions">
+  <pre>{{ selectedPermissions | json }}</pre>
+</div> -->

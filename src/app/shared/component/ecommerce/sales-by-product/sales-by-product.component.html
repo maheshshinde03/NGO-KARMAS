@@ -1,0 +1,66 @@
+<div class="card" (clickOutside)="clickOutside()">
+    <div class="card-header pb-0">
+        <h4>Sales By Product</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body sale-product pt-0">
+        <div class="row">
+            <div class="col-5">
+                <h5 class="f-w-500 mb-1 mt-2">Current YTD</h5>
+                <h6 class="font-light">Feb 2, 2023 to Jan 23,</h6>
+            </div>
+            <div class="col-7">
+                <select class="form-select" >
+                    <option selected="">Current YTD</option>
+                    <option value="1">Current MTD</option>
+                    <option value="2">YTD earning</option>
+                    <option value="3">YTD Net Pay</option>
+                    <option value="4">MTD Earning</option>
+                </select>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>%Sold</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for( data of SalesProduct; track data){
+                <tr>
+                    <td>{{ data.product }}</td>
+                    <td>${{ data.amount }}</td>
+                    <td>{{ data.sold}}</td>
+                    <td>
+                        <div class="progress-showcase">
+                            <div class="progress sm-progress-bar progress-border-{{data.class}}">
+                                <div class="progress-bar"[ngStyle]="{'width':data.value}"></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+            <tfoot class="bg-light">
+                <tr>
+                    <th>Total</th>
+                    <th class="font-dark f-w-800">$9,978</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

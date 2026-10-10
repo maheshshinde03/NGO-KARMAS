@@ -1,0 +1,63 @@
+<div class="card" (clickOutside)="clickOutside()">
+  <div class="card-header pb-0">
+    <h4>Top Request</h4>
+    <div class="dropdown icon-dropdown">
+      <button class="btn dropdown-toggle" type="button" (click)="open()">
+        <i class="icon-more-alt"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+        <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+        <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+        <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body selling-table checkbox-checked">
+    <div class="table-responsive">
+      <div class="datatable-wrapper datatable-loading no-footer searchable fixed-columns">
+        <div class="datatable-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <input class="form-check-input" type="checkbox">
+                </th>
+                <th>Product Name</th>
+                <th>Order Id</th>
+                <th>Email</th>
+                <th>Stock</th>
+                <!-- <th>Amount </th> -->
+                <th>Task</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(data of TopSellingProduct; track data){
+              <tr>
+                <td>
+                  <input class="form-check-input" type="checkbox">
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="flex-shrink-0"><img class="img-30 b-r-10" src="{{data.img}}" alt=""></div>
+                    <div class="flex-grow-1"> <a [routerLink]="'/ecommerce/products'">
+                        <h6 class="f-w-500">{{data.Product}}</h6><span
+                          class="font-light f-w-400 f-13">{{data.date}}</span>
+                      </a></div>
+                  </div>
+                </td>
+                <td>{{data.orderId}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.stock}}</td>
+                <!-- <td>{{data.amount}}</td> -->
+                <td>
+                  <button class="btn edge-btn f-13 w-100 btn-light-{{data.class}}">{{data.payment}}</button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

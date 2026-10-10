@@ -1,0 +1,68 @@
+<ng-template #ngoProfile>
+    <app-form [formConfig]="ngoTypeSearchGroupStructure" [actiontype]="routeName" [isNext]="true" (emitData)="handleSubmit($event,'ngProfile')"
+    [formData]="ngoDetailsData.data" (selectValueChangeChange)="selectValueChange($event)" (photoBase64Uploaded)="handleFileUpload($event)"></app-form>
+    <!-- <app-airwaybill [editData]="shipmentDataOnEdit" (emitData)="handleSubmitAirWayBill($event)"></app-airwaybill> -->
+</ng-template>
+
+
+<ng-template #ngoOfficeBearers>
+    <!-- <app-form [formConfig]="ngoOfficeBearersFormGroup" [actiontype]="routeName" [isNext]="true" (emitData)="handleSubmit($event,'ngoOfficeBearers')"
+    [formData]="this.ngoDetailsData.data"></app-form>
+
+    <app-table [jsonData]="nGOOfficeBearersDetailsTable" (handleDeleteAction)="handleDeleteAction($event)"></app-table> -->
+
+    <div class="custom-row mt-4">
+        <div class="shipmentContainer">
+            <!-- <h4 class="subheader">Profile</h4> -->
+            <div class="custom-row">
+                <app-popup-form (handleCreateAction)="handleCreateAction('officeBearers')" [formDetailsData]="nGOOfficeBearersDetailsTable"></app-popup-form>
+                <!-- <app-form [formConfig]="AgentSearchGroupStructure" [actiontype]="routeName" [formData]="this.AgentDetailsData.data" (selectValueChangeChange)="handleSelectValueChange($event)" (emitData)="handleSubmit($event,'profileCreate')" [isNext]="true"></app-form>  -->
+            </div>
+            <div class="custom-row" style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <button type="submit" (click)="handleSubmit('tp','addressGst')" class="btn btn-primary">{{ 'Next' }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <app-consignee [destinationId]="destinationId" (emitData)="handleSubmitConsignee($event)"></app-consignee> -->
+</ng-template>
+
+<ng-template #sectorsOfWorkDetails>
+    <!-- <app-form [formConfig]="ngoStateDistrictCityFormGroup" [actiontype]="routeName" [isNext]="true" (emitData)="handleSubmit($event,'ngoStateDistrictCity')"
+    [formData]="this.ngoDetailsData.data"></app-form> -->
+    <!-- <app-weight-and-dimensions [max_pcs]="max_pcs" (emitData)="handleSubmitWeightDimensions($event)"></app-weight-and-dimensions> -->
+
+    <div class="custom-row mt-4">
+        <div class="shipmentContainer">
+            <!-- <h4 class="subheader">Profile</h4> -->
+            <div class="custom-row">
+                <app-popup-form (handleCreateAction)="handleCreateAction('sectorOfWorkDetails')" [formDetailsData]="sectorOfWorkDetailsTable"></app-popup-form>
+                <!-- <app-form [formConfig]="AgentSearchGroupStructure" [actiontype]="routeName" [formData]="this.AgentDetailsData.data" (selectValueChangeChange)="handleSelectValueChange($event)" (emitData)="handleSubmit($event,'profileCreate')" [isNext]="true"></app-form>  -->
+            </div>
+            <div class="custom-row" style="display: flex; justify-content: flex-end; margin-top: 1rem;" *ngIf="routeName !== 'view'">
+                <button type="submit" (click)="handleSubmit('tp','sectorsOfWorkDetails')" class="btn btn-primary">{{ routeId ? 'update' : 'submit' }}</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- <ng-template #ngoFund>
+    <div class="custom-row mt-4">
+        <div class="shipmentContainer">
+            <div class="custom-row">
+                <app-popup-form (handleCreateAction)="handleCreateAction('ngoFundDetails')" [formDetailsData]="ngoFundDetailsTable"></app-popup-form>
+            </div>
+            <div class="custom-row" style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <button type="submit" (click)="handleSubmit('tp','ngoFund')" class="btn btn-primary">{{ 'Next' }}</button>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<!-- <ng-template #ngoFieldMapping>
+    <app-form [formConfig]="ngoFieldMappingFormGroup" [actiontype]="routeName" [isNext]="true" (emitData)="handleSubmit($event,'ngoFieldMapping')"
+    [formData]="this.ngoDetailsData.data"></app-form>
+</ng-template> -->
+
+
+<app-mat-stepper [steps]="jsonData" #stepperRef></app-mat-stepper>

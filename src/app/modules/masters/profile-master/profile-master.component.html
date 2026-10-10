@@ -1,0 +1,53 @@
+<!-- <p>profile-master works!</p> -->
+
+
+
+
+<div class="ngo-container">
+
+    <!-- Show Tabs only in EDIT mode -->
+    <ng-container *ngIf="isNgoLogin; else stepperOnly">
+
+        <!-- Tabs Header -->
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li *ngFor="let tab of tabs; let i = index" [class.active]="selectedTab === i"
+                    (click)="selectedTab = i">
+                    {{ tab.label }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+            <ng-container [ngSwitch]="selectedTab">
+                <ng-container *ngSwitchCase="0">
+                    <!-- <ng-container *ngTemplateOutlet="ngoProfile"></ng-container> -->
+                    <app-form [formConfig]="requestSearchGroupStructure" [actiontype]="routeName"
+                        (emitData)="handleSubmit($event)" [formData]="this.requestDetailsData.data"
+                        (onExtraButtonEmitChangeEmit)="onExtraButtonEmitChangeEmit($event)"
+                        (photoBase64Uploaded)="handleFileUpload($event)"></app-form>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="1">
+                    <ng-container *ngTemplateOutlet="ngoProfileMaster"></ng-container>
+                </ng-container>
+
+            </ng-container>
+        </div>
+
+    </ng-container>
+
+    <!-- Stepper view for Create or View mode -->
+    <ng-template #stepperOnly>
+        <app-form [formConfig]="requestSearchGroupStructure" [actiontype]="routeName" (emitData)="handleSubmit($event)"
+            [formData]="this.requestDetailsData.data"
+            (onExtraButtonEmitChangeEmit)="onExtraButtonEmitChangeEmit($event)"
+            (photoBase64Uploaded)="handleFileUpload($event)"></app-form>
+    </ng-template>
+</div>
+
+
+<ng-template #ngoProfileMaster>
+
+</ng-template>

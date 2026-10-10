@@ -1,0 +1,79 @@
+<div class="card summary-card" (clickOutside)="clickOutside()">
+    <div class="card-header pb-0">
+        <h4>NGO Details</h4>
+        <!-- <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div> -->
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12 custom-width-1">
+                <div class="project-cost">
+                    <h5 class="font-light">
+                        <svg class="svg-w-20 stroke-light me-2">
+                            <use href="assets/svg/iconly-sprite.svg#Chart"></use>
+                        </svg>Show Number of NGO Pertness of Karmas 
+                    </h5>
+                    <ul class="d-flex">
+                        @for( data of taskSummaryNGOResponse ; track data){
+                        <li class="card-hover">
+                            <div class="d-flex bg-light-{{data.class}} flex-column">
+                                <div class="flex-shrink-0 border-{{data.class}}">
+                                    <svg class="svg-w-24 stroke-{{data.class}}">
+                                        <use attr.xlink:href="assets/svg/iconly-sprite.svg#{{data.icon}}"></use>
+                                    </svg>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="f-w-500">{{data.task}}</h6>
+                                    <h4 class="f-w-700">{{data.number}}</h4>
+                                </div>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="col-sm-4 custom-width-2">
+                <h5 class="font-light">
+                    <svg class="svg-w-20 stroke-light me-2">
+                        <use href="assets/svg/iconly-sprite.svg#User"></use>
+                    </svg>Our crew
+                </h5>
+                <div class="team-member">
+                    <h5 class="font-light mb-2">Team Members</h5>
+                    <div class="customers d-inline-block avatar-group">
+                        <ul>
+                            <li class="d-inline-block"><img class="img-40 b-r-8" src="assets/images/user/13.jpg"alt="#"></li>
+                            <li class="d-inline-block"><img class="img-40 b-r-8" src="assets/images/user/6.jpg" alt="#"></li>
+                            <li class="d-inline-block"><img class="img-40 b-r-8" src="assets/images/user/3.jpg"alt="#"></li>
+                            <li class="d-inline-block"><span class="b-r-10">+4</span></li>
+                        </ul>
+                    </div>
+                    <div class="d-flex bg-light">
+                        <div class="flex-grow-1">
+                            <h6 class="f-16 font-light">Hours</h6>
+                            <h4>67</h4>
+                        </div>
+                        <div class="team-chart">
+                            <apx-chart [series]="TaskSummaryChartData.series" [chart]="TaskSummaryChartData.chart"
+                                [grid]="TaskSummaryChartData.grid" [dataLabels]="TaskSummaryChartData.dataLabels"
+                                [fill]="TaskSummaryChartData.fill" [stroke]="TaskSummaryChartData.stroke"
+                                [annotations]="TaskSummaryChartData.annotations" [xaxis]="TaskSummaryChartData.xaxis"
+                                [legend]="TaskSummaryChartData.legend" [tooltip]="TaskSummaryChartData.tooltip"
+                                [yaxis]="TaskSummaryChartData.yaxis" [responsive]="TaskSummaryChartData.responsive"
+                                [colors]="TaskSummaryChartData.colors">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

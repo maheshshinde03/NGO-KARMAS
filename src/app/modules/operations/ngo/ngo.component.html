@@ -1,0 +1,10 @@
+<div class="row mr-3">
+    <div class="col" *ngFor="let card of requestStatusCard">
+        <app-dashboard-card [number]="card.number" [label]="card.label"
+            (click)="handleCardClickAction(card)"></app-dashboard-card>
+    </div>
+</div>
+<app-table [jsonData]="ngoDetailsData" (handleCreateAction)="handleCreateAction()"
+    (handleDeleteAction)="handleDeleteAction($event)" (handleEditAction)="handleEditAction($event)"
+    (handleViewAction)="handleViewAction($event)" (handleExportAction)="handleExportAction()"
+    (handlelockAction)="handlelockAction($event)" (handleUnlockAction)="handleUnlockAction($event)"></app-table>

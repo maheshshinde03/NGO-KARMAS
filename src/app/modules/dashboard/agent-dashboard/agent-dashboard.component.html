@@ -1,0 +1,267 @@
+<!-- <div class="container-fluid ecommerce-dashboard default-dashboard project-dashboard">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart" (click)="dashboardClick('case1')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-3">
+                    <app-dashboard-chart [data]="TotalSaleChart1" (click)="dashboardClick('case2')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-3">
+                    <app-dashboard-chart [data]="TotalSaleChart2" (click)="dashboardClick('case3')"></app-dashboard-chart>
+                </div>
+                <div class="col-md-3">
+                    <app-dashboard-chart [data]="TotalSaleChart3" (click)="dashboardClick('case4')"></app-dashboard-chart>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <app-total-invoice [data]="ProjectData" [invoiceDashboard]="invoiceDashboard"></app-total-invoice>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <app-schedule-time [voyageDashboardDetails]="voyageDashboardDetails"></app-schedule-time>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #DashboardDataModal let-modal let-rowData="DashboardData">
+    <div class="modal-content">
+        <div class="modal-header mb-3">
+            <h4 class="modal-title" id="exampleModalLabel">{{dashboardHeader}}</h4>
+            <button class="btn-close" type="button" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+            <app-table [jsonData]="DashboardData"></app-table>
+        </div>
+    </div>
+</ng-template> -->
+
+<!-- <app-ecommerce></app-ecommerce> -->
+
+<div class="container-fluid ecommerce-dashboard default-dashboard project-dashboard">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md">
+                    <app-dashboard-chart *ngIf="isNgoLogin" [data]="TotalRequestAssigneTONgo"></app-dashboard-chart>
+                    <app-dashboard-chart *ngIf="!isNgoLogin" [data]="TotalSaleChart"></app-dashboard-chart>
+                </div>
+
+                <div class="col-md" *ngIf="isNgoLogin">
+                    <app-dashboard-chart [data]="TotalRequestCompletedTONgo"></app-dashboard-chart>
+                </div>
+                <div class="col-md" *ngIf="isNgoLogin">
+                    <app-dashboard-chart [data]="TotalRequestRejetedTONgo"></app-dashboard-chart>
+                </div>
+
+                <div class="col-md" *ngIf="!isNgoLogin">
+                    <app-dashboard-chart [data]="TotalSaleChart1"></app-dashboard-chart>
+                </div>
+
+
+                <!-- <div class="col-md" *ngIf="isNgoLogin">
+                    <app-dashboard-chart [data]="TotalReqNgoPending"></app-dashboard-chart>
+                </div> -->
+                <div class="col-md" *ngIf="!isNgoLogin">
+                    <app-dashboard-chart [data]="TotalSaleChart2"></app-dashboard-chart>
+                </div>
+                <div class="col-md" *ngIf="!isNgoLogin">
+                    <app-dashboard-chart [data]="TotalSaleChart3"></app-dashboard-chart>
+                </div>
+                <div class="col-md" *ngIf="!isNgoLogin">
+                    <app-dashboard-chart [data]="TotalSaleChart4"></app-dashboard-chart>
+                </div>
+                <div class="col-md" *ngIf="!isNgoLogin">
+                    <app-dashboard-chart [data]="TotalSaleChart5"></app-dashboard-chart>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <app-task-summary [taskSummaryNGOResponse]="taskSummaryNGOResponse"></app-task-summary>
+                    <!-- <app-dashboard-chart [data]="TotalSaleChart4"
+                        ></app-dashboard-chart> -->
+                </div>
+                <div class="col-md-6">
+                    <app-all-invoices *ngIf="!isNgoLogin" [isNgoLogin]="isNgoLogin"
+                        [recentRequestAll]="recentRequestAll"></app-all-invoices>
+                    <app-all-invoices *ngIf="isNgoLogin" [isNgoLogin]="isNgoLogin"
+                        [recentRequestAll]="recentRequestAllForNgo"></app-all-invoices>
+                    <!-- <app-dashboard-chart [data]="TotalSaleChart5"
+                        ></app-dashboard-chart> -->
+                </div>
+                <!-- <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart6"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart7"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart8"
+                        ></app-dashboard-chart>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Notification card  -->
+        <div class="col-xl-12 mb-3" *ngIf="!isNgoLogin">
+            <div class="tab-pane fade active show">
+                <div class="card mb-0">
+                    <div class="card-body p-0">
+                        <div class="card-header pb-0">
+                            <div>
+                                <h4>{{'Notifications'}} <span class="badge rounded-pill badge-secondary"
+                                        *ngIf="countNotifcation > 0">{{ countNotifcation }}</span></h4>
+                            </div>
+                        </div>
+                        <div class="notifications-container">
+                            <div class="notification-card" *ngFor="let item of notificationsData"
+                                [class.viewed]="item.is_viewed === 1">
+                                <div class="left-section">
+                                    <img class="user-img" [src]="sanitizeImage(item.user_image)" />
+                                </div>
+
+                                <div class="right-section">
+                                    <div class="details-row">
+                                        <p class="notification-text">
+                                            {{ item.notification_details || 'New notification' }}
+                                        </p>
+                                    </div>
+
+                                    <div class="meta-row">
+                                        <span class="time">
+                                            {{ item.created_at | date:'MMM d, y, h:mm a' }}
+                                        </span>
+
+                                        <span class="badge" *ngIf="item.notification_type">
+                                            {{ item.notification_type.replace('-', ' ') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12" *ngIf="!isNgoLogin">
+            <div class="row">
+                <div class="col-md-6">
+                    <app-total-project [isScorer]="true" [isNgoLogin]="isNgoLogin" [data]="DashboardDetailsData">
+                    </app-total-project>
+                </div>
+
+                <div class="col-md-6">
+                    <app-total-project [isScorer]="false" [isNgoLogin]="isNgoLogin"ƒ [data]="DashboardDetailsData">
+                    </app-total-project>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12" *ngIf="isNgoLogin">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab-pane fade active show">
+                        <div class="card mb-0">
+                            <div class="card-body p-0">
+                                <div class="card-header pb-0">
+                                    <div>
+                                        <h4>{{'Notifications'}} <span class="badge rounded-pill badge-secondary"
+                                                *ngIf="countNotifcation > 0">{{ countNotifcation }}</span></h4>
+                                    </div>
+                                </div>
+                                <div class="notifications-container">
+                                    <div class="notification-card" *ngFor="let item of notificationsData"
+                                        [class.viewed]="item.is_viewed === 1">
+                                        <div class="left-section">
+                                            <img class="user-img" [src]="sanitizeImage(item.user_image)" />
+                                        </div>
+
+                                        <div class="right-section">
+                                            <div class="details-row">
+                                                <p class="notification-text">
+                                                    {{ item.notification_details || 'New notification' }}
+                                                </p>
+                                            </div>
+
+                                            <div class="meta-row">
+                                                <span class="time">
+                                                    {{ item.created_at | date:'MMM d, y, h:mm a' }}
+                                                </span>
+
+                                                <span class="badge" *ngIf="item.notification_type">
+                                                    {{ item.notification_type.replace('-', ' ') }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <app-total-project [isScorer]="false" [data]="DashboardDetailsData">
+                    </app-total-project>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12" *ngIf="!isNgoLogin">
+            <div class="row">
+                <div class="col-md">
+                    <app-reward-count-dashboard [isNgoLogin]="isNgoLogin"
+                        [rewardCountDash]="rewardCountDash"></app-reward-count-dashboard>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart16"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart17"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart18"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart19"
+                        ></app-dashboard-chart>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart20"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart21"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart22"
+                        ></app-dashboard-chart>
+                </div>
+                <div class="col-md">
+                    <app-dashboard-chart [data]="TotalSaleChart23"
+                        ></app-dashboard-chart>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

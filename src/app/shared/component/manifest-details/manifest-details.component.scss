@@ -1,0 +1,64 @@
+.custom-mr{
+    margin-right: 7px;
+}
+
+.btn-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #50b9b3; /* Button color */
+    color: #fff; /* Text color */
+    padding: 8px 16px; /* Padding */
+    border-radius: 50px; /* Rounded corners */
+    font-size: 14px; /* Font size */
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-custom i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 16px; /* Icon size */
+  }
+  
+  .btn-custom:hover {
+    background-color: #3a9a8f; /* Darker color on hover */
+  }
+  
+  .btn-custom:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Focus outline */
+  }
+
+  .card-content-info{
+    display: flex;
+    padding: 5px 10px 5px 10px;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0px 4.5px 12.6px 0px #0000000D;
+
+    p{
+        font-family: Helvetica;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 13.8px;
+        letter-spacing: 0.9000000357627869px;
+        text-align: left;
+        align-items: end;
+        display: flex;
+        // justify-content: center;
+        align-items: end;
+
+    }
+
+    span{
+        font-family: Helvetica;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 13.8px;
+        letter-spacing: 0.9000000358px;
+        text-align: left;
+        color: #7B868A;
+
+    }
+}

@@ -1,0 +1,32 @@
+.card {
+    width: 100%;
+    height: 80px;
+    border-radius: 6px;
+    background-color: #164761 !important;
+    color: #ffffff !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+@mixin text {
+    font-weight: 500;
+    color: #ffffff !important;
+    margin: 0;
+}
+
+.card-title {
+    @include text;
+    font-size: 150%;
+}
+
+.card-text {
+    @include text;
+    font-size: 90%;
+    margin-top: 1px;
+    white-space: nowrap;
+}

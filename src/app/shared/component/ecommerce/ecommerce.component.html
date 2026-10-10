@@ -1,0 +1,44 @@
+<div class="container-fluid ecommerce-dashboard">
+    <div class="row">
+        <div class="col-xl-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <app-top-ecommerce-chart [data]="TotalSaleChart"></app-top-ecommerce-chart>
+                </div>
+                <div class="col-md-4">
+                    <app-top-ecommerce-chart [data]="NewOrderChart"></app-top-ecommerce-chart>
+                </div>
+                <div class="col-md-4">
+                    <app-top-ecommerce-chart [data]="OrderDeliveryChart"></app-top-ecommerce-chart>
+                </div>
+                <div class="col-md-6 col-xl-7">
+                    <app-top-selling-products></app-top-selling-products>
+                </div>
+                <div class="col-md-6 col-xl-5">
+                    <app-category-overview></app-category-overview>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <app-manage-order></app-manage-order>
+        </div>
+        <div class="col-md-6">
+            <app-sales-summary></app-sales-summary>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <app-product-offer></app-product-offer>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <app-product-progress></app-product-progress>
+        </div>
+        <!-- <div class="col-md-12 col-xl-4">
+            <app-best-sellers></app-best-sellers>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <app-product-details></app-product-details>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <app-sales-by-product></app-sales-by-product>
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="date-picker">
+    <label [ngClass]="{'text-danger': required}">{{ label }}</label>
+    <div class="input-group">
+        <input class="form-control" [placeholder]="placeholder" [name]="name" ngbDatepicker #d3="ngbDatepicker"
+            [positionTarget]="calendorbutton" [disabled]="disable" [formControl]="formControl">
+        <button #calendorbutton class="btn btn-primary calendar" (click)="d3.toggle()" type="button" [disabled]="disable">
+            <app-feathericon [icon]="'calendar'"></app-feathericon>
+        </button>
+    </div>
+</div>

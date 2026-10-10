@@ -1,0 +1,39 @@
+// .container {
+//     width: 100%;
+//     max-width: 800px; /* Adjust the max-width as needed */
+//     margin: 0 auto; /* Center align the container */
+//     padding: 20px; /* Add padding around the container */
+//     background-color: #f9f9f9; /* Light background color */
+//     border-radius: 8px; /* Rounded corners */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+// }
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Space out the title and close button */
+    align-items: center;
+    margin-bottom: 20px; /* Space between header and form */
+    padding: 10px 15px; /* Vertical padding in header */
+    border-bottom: 2px solid #ddd; /* Optional bottom border for the header */
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; 
+}
+.close-btn {
+    font-size: 18px;
+    color: #888; 
+    cursor: pointer; 
+    transition: color 0.3s; 
+}
+
+.close-btn:hover {
+    color: #555; 
+}
+
+body {
+    margin: 0;
+    padding-top: 60px;
+}

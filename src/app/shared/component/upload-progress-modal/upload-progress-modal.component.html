@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">Upload Progress</h4>
+  <!-- <button type="button" class="close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  <!-- Show progress bar if uploading -->
+  <div *ngIf="isUploading; else summary">
+    <p>{{ completedFiles }} of {{ totalFiles }} files uploaded.</p>
+    <div class="progress">
+      <div class="progress-bar" [style.width.%]="progressPercentage" role="progressbar">
+        {{ progressPercentage | number: '1.0-0' }}%
+      </div>
+    </div>
+  </div>
+
+  <!-- Show summary if upload is complete -->
+  <ng-template #summary>
+    <p>{{ completedFiles }} files successfully uploaded.</p>
+    <p *ngIf="errorCount > 0">Errors: {{ errorCount }}</p>
+    <div *ngIf="errorFiles" class="mt-3">
+      <h5>Files with errors:</h5>
+      <ul>
+        <!-- <li *ngFor="let error of errorFiles" class="warning">{{ error.file.name }}</li> -->
+        <li *ngFor="let error of errorFiles">{{ error.file.name }} - Error: {{ error.error }}</li>
+      </ul>
+    </div>
+  </ng-template>
+</div>
+<div class="modal-footer">
+  <button *ngIf="isUploading" type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  <!-- <button *ngIf="!isUploading" type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button> -->
+  <button *ngIf="!isUploading" type="button" class="btn btn-primary" (click)="onOk()">OK</button>
+  <!-- <ng-template #summary>
+    <button type="button" class="btn btn-primary" (click)="onOk()">OK</button>
+  </ng-template> -->
+</div>

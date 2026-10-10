@@ -1,0 +1,49 @@
+<div class="card" (clickOutside)="clickOutside()">
+  <div class="card-header pb-0">
+    <h4>Best Sellers</h4>
+    <div class="dropdown icon-dropdown">
+      <button class="btn dropdown-toggle" type="button" (click)="open()">
+        <i class="icon-more-alt"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+        <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+        <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+        <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pt-0 seller-table">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Client Name</th>
+            <th>Price</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for( data of BestSellerData; track data){
+          <tr>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <div class="flex-shrink-0"><img class="b-r-10" src="{{ data.img }}" alt="">
+                </div>
+                <div class="flex-grow-1"> <a [routerLink]="'/user/users-profile'">
+                    <h6 class="f-w-500">{{ data.name}}</h6><span class="f-w-400 f-13">{{ data.date }}</span>
+                  </a></div>
+              </div>
+            </td>
+            <td>${{ data.price}}</td>
+            <td>{{ data.product }}</td>
+            <td>${{ data.amount }}</td>
+            <td> <a class="btn edge-btn f-12 w-100 btn-light-{{data.class}}">{{ data.status}}</a></td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

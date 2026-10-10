@@ -1,0 +1,74 @@
+<div class="container-fluid default-dashboard" >
+    <div class="row">
+        <div class="col-md-12 col-xl-12 mb-3">
+            <div class="d-flex justify-content-end">
+                <div class="custom-right">
+                    <!-- <button class="btn-custom" (click)="sendPMS()">total_crew
+                        <i class="fa fa-location-arrow"></i> Send to PMS
+                    </button> -->
+                    <button [disabled]="!isDataAvailable || !canSendToPMS" [hidden]="!isAdmin" class="btn btn-outline-primary custom-mr" (click)="viewTable(manifestTableContent,true)">
+                        <i class="fa fa-location-arrow"></i> Send to PMS
+                    </button>
+                    <button [disabled]="!isDataAvailable" class="btn btn-outline-primary custom-mr" (click)="viewTable(manifestTableContent,false)">
+                        View {{ isPassenger ? 'Passenger' : 'Crew'}}
+                    </button>
+                    <!-- <button [disabled]="!isDataAvailable" class="btn btn-outline-primary custom-mr">
+                        Export Excel
+                    </button> -->
+
+                    <button class="btn btn-primary custom-mr" [disabled]="!canUpload" (click)="uploadManifast()">
+                        <app-feathericon *ngIf="" [icon]="'plus-square'"></app-feathericon>
+                        <app-feathericon [icon]="'plus-square'"></app-feathericon>
+                           {{'Upload'}} {{ isPassenger ? 'Passenger' : 'Crew'}}
+                    </button>
+                    <!-- <div class="col-md-2 d-md-block d-none">
+                        <div class="form-group mb-0 me-0"></div>
+                        <a class="btn btn-primary d-flex align-items-center" (click)="sendPMS()">
+                          <app-feathericon [icon]="'plus-square'"></app-feathericon>
+                          Create {{'Passenger'}}
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-6" *ngIf="passengerDetails">
+            <app-manifest-review [isPassenger]="isPassenger" [passengerDetails]="passengerDetails"></app-manifest-review>
+        </div>
+        <div class="col-md-6 col-xl-6" *ngIf="passengerData">
+            <app-manifest-graph [isPassenger]="isPassenger" [passengerDetails]="passengerDetails" [investment]="true" [passengerData]="passengerData"></app-manifest-graph>
+        </div>
+    </div>
+</div>
+
+<!-- <ng-template #norecord>
+    <app-no-record-found></app-no-record-found>
+</ng-template> -->
+
+<ng-template #manifestTableContent let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myFullLargeModalLabel">{{ isPassenger ? 'Passenger' : 'Crew'}} Manifest</h4>
+            <button class="btn-close" type="button" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body dark-modal">
+            <div class="card active-cruise" *ngIf="selectedShip?.ship_name">
+                <div class="card-content-info">
+                    <!-- <div><img style="height: 56px; border-radius: 8px;    width: 56px;
+                        " src="/assets/images/ship/boat1.png" alt=""></div> -->
+                    <p id="pAlign" style="color: #2C89DF;
+                    font-size: 16px;
+                    font-weight: 600;">Cruise Details</p>
+                    <p id="pAlign">Port Call No : <span>{{selectedShip?.port_call_no}}</span> </p>
+                    <p id="pAlign">VCN : <span>{{selectedShip?.vcn_no}}</span> </p>
+                    <p id="pAlign"> JOB ID : <span>{{selectedShip?.job_no}}</span></p>
+                    <p id="pAlign">ETA : <span>{{selectedShip?.expected_arrival_datetime | date:'dd MMM yyyy'}}&nbsp;{{
+                            selectedShip?.expected_arrival_datetime | date:'h:mm a' }}</span></p>
+                    <p id="pAlign">ETD : <span>{{selectedShip?.expected_departure_datetime | date:'dd MMM yyyy'}}&nbsp;{{
+                            selectedShip?.expected_departure_datetime | date:'h:mm a' }}</span></p>
+                    <p id="pAlign">VESSEL : <span>{{selectedShip?.ship_name}}</span></p>
+                </div>
+            </div>
+            <app-manifest-view-table [isPassenger]="isPassenger" [isPmsSend]="isPmsSend" [voyageId]="selectedShip.voyage_registration_id"></app-manifest-view-table>
+        </div>
+    </div>
+</ng-template>

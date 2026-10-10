@@ -1,0 +1,78 @@
+<div class="form-check custom-checkbox">
+  <div class="row">
+    <div class="col-md">
+      <input
+        class="form-check-input big-checkbox"
+        type="checkbox"
+        [id]="name"
+        [checked]="value"
+        [disabled]="disable"
+        (change)="onCheckboxChange($event)"
+      />
+      <label class="form-check-label big-checkbox-label" [for]="name">
+        {{ label }}
+      </label>
+      <div class="text text-danger mt-1" *ngIf="formControl?.touched && formControl?.invalid">
+        <div *ngIf="formControl?.errors?.['required']">
+          {{ label }} is required.
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="contractIdFormControl" class="col-md">
+      <div class="form-group">
+        <label for="{{ name }}_contractId">Contract Id</label>
+        <input
+          class="form-control"
+          type="text"
+          [id]="name + '_contractId'"
+          [formControl]="contractIdFormControl"
+          placeholder="Contract Id"
+          [disabled]="disable"
+        />
+      </div>
+    </div>
+    
+    <div *ngIf="tariffFormControl" class="col-md">
+      <div class="form-group">
+        <label for="{{ name }}_tariff">Tariff</label>
+        <input
+          class="form-control"
+          type="text"
+          [id]="name + '_tariff'"
+          [formControl]="tariffFormControl"
+          placeholder="Tariff"
+          [disabled]="true"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="qtyFormControl" class="col-md">
+      <div class="form-group">
+        <label for="{{ name }}_qty">Quantity</label>
+        <input
+          class="form-control"
+          type="text"
+          [id]="name + '_qty'"
+          [formControl]="qtyFormControl"
+          placeholder="Quantity"
+          [disabled]="false"
+        />
+      </div>
+    </div>
+    
+    <div *ngIf="chargesFormControl" class="col-md">
+      <div class="form-group">
+        <label for="{{ name }}_charges">Charges</label>
+        <input
+          class="form-control"
+          type="text"
+          [id]="name + '_charges'"
+          [formControl]="chargesFormControl"
+          placeholder="Charges"
+          [disabled]="true"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="card product-offer" (clickOutside)="clickOutside()">
+    <div class="card-header">
+        <h4>Offer</h4>
+        <div class="dropdown icon-dropdown">
+            <button class="btn dropdown-toggle" type="button" (click)="open()">
+                <i class="icon-more-alt"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" [class.show]="isopen">
+                <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Monthly</a>
+                <a class="dropdown-item" href="javascript:void(0)">Yearly</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body product-silder-custom">
+        <owl-carousel-o [options]="SildesoptionsData">
+            @for( sildesItem of productoffer ; track sildesItem){
+            <ng-template carouselSlide>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="item text-center">
+                                <img class="img-fluid" src="{{ sildesItem.img }}" alt="img"><img
+                                    class="product-gif img-fluid" src="assets/images/gif/new.gif" alt="img">
+                                <div class="product-content">
+                                    <h4><a class="f-18" [routerLink]="'/ecommerce/products'">{{ sildesItem.title }}</a></h4>
+                                    <h5 class="font-primary f-w-600 f-16 mt-1">$130.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            }
+        </owl-carousel-o>
+    </div>
+</div>

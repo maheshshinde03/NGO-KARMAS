@@ -1,0 +1,55 @@
+<div class="card total-project">
+    <div class="card-header border-dash-bottom">
+        <h4>Total Invoices</h4>
+        <div class="card-icon">
+            <h3 class="f-w-600">{{invoiceDashboard?.total_invoice_master}}</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-7">
+                <div class="customer-chart">
+                    <ng-container *ngIf="!isSeriesAllZeros(data.series); else nodata">
+                        <apx-chart [series]="data.series" [chart]="data.chart" [plotOptions]="data.plotOptions"
+                            [legend]="data.legend" [dataLabels]="data.dataLabels" [grid]="data.grid"
+                            [colors]="data.colors" [responsive]="data.responsive">
+                        </apx-chart>
+                    </ng-container>
+                    <ng-template #nodata>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <h6>No record found</h6>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="col-5">
+                <ul class="project-details">
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-primary"><span></span></div>
+                            <p class="ms-2 f-w-500">TAX Invoices</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{invoiceDashboard?.total_tax_invoice}}</span>
+                    </li>
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-secondary"><span></span></div>
+                            <p class="ms-2 f-w-500">Proforma Invoices</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{invoiceDashboard?.total_performa_invoice}}</span>
+                    </li>
+                    <li class="d-flex align-items-center mt-3 justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">Yet to Start</p>
+                        </div>
+                        <span class="ms-1 f-w-500">{{invoiceDashboard?.remaining_invoice}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <app-invoice-irn-progress></app-invoice-irn-progress>
+        </div>
+    </div>
+</div>

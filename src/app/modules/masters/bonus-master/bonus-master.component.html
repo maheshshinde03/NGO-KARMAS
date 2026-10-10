@@ -1,0 +1,11 @@
+<!-- Table for Bonus Master Management -->
+<app-table
+  [jsonData]="bonusMasterDetailsData"
+  (handleCreateAction)="handleCreateAction()"
+  (handleEditAction)="handleEditAction($event)"
+  (handleViewAction)="handleViewAction($event)"
+  (handleDeleteAction)="handleDeleteAction($event)"
+  (handleSelectRowAction)="handleEditAction($event)">
+</app-table>
+
+

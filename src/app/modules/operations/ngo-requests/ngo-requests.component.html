@@ -1,0 +1,60 @@
+<div class="row mr-3">
+    <div class="col" *ngFor="let card of requestStatusCard">
+        <app-dashboard-card [number]="card.number" [label]="card.label"
+            (click)="handleCardClickAction(card)"></app-dashboard-card>
+    </div>
+</div>
+
+<div class="ngo-container">
+
+    <!-- Show Tabs only in EDIT mode -->
+    <ng-container>
+
+        <!-- Tabs Header -->
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li *ngFor="let tab of tabs; let i = index" [class.active]="selectedTab === i"
+                    (click)="selectedTab = i">
+                    {{ tab.label }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+            <ng-container [ngSwitch]="selectedTab">
+                <ng-container *ngSwitchCase="0">
+                    <app-table [jsonData]="requestDetailsData" (handleCreateAction)="handleCreateAction()"
+                        (handleDeleteActionWithData)="handleDeleteAction($event)" (handleViewAction)="handleViewAction($event)"
+                        (handleSelectRowAction)="handleEditAction($event)"
+                        (handleCheckActionFullData)="handleCheckAction($event)"
+                        (handleCorssActionFullData)="handleCorssAction($event)"
+                        (handleEditFullDataAction)="handleEditFullDataAction($event)"
+                        (handleRequestFileAction)="handleRequestFileAction($event)"></app-table>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="1">
+                    <app-table [jsonData]="requestORGDetailsData" (handleCreateAction)="handleCreateAction()"
+                        (handleDeleteActionWithData)="handleDeleteAction($event)" (handleViewAction)="handleViewAction($event)"
+                        (handleSelectRowAction)="handleEditAction($event)"
+                        (handleCheckActionFullData)="handleCheckAction($event)"
+                        (handleCorssActionFullData)="handleCorssAction($event)"
+                        (handleEditFullDataAction)="handleEditFullDataAction($event)"
+                        (handleRequestFileAction)="handleRequestFileAction($event)"></app-table>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="2">
+                    <app-table [jsonData]="requestDetailsDataUserPerson" (handleCreateAction)="handleCreateActionV2()"
+                        (handleDeleteActionWithData)="handleDeleteAction($event)"
+                        (handleViewAction)="handleViewActionV2($event)"
+                        (handleCheckActionFullData)="handleCheckAction($event)"
+                        (handleCorssActionFullData)="handleCorssAction($event)"
+                        (handleEditFullDataAction)="handleEditFullDataActionV2($event)"
+                        (handleRequestFileAction)="handleRequestFileAction($event)"></app-table>
+                </ng-container>
+
+            </ng-container>
+        </div>
+
+    </ng-container>
+</div>

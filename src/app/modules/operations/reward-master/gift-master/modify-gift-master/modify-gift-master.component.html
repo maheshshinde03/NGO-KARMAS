@@ -1,0 +1,6 @@
+<app-form
+  [formConfig]="giftFormStructure"
+  [actiontype]="routeName"
+  (emitData)="handleSubmit($event)"
+  [formData]="giftMasterDetailsData.data"
+></app-form>

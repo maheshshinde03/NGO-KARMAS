@@ -1,0 +1,17 @@
+<form>
+    <div class="sidebar-body form-check radio ps-0">
+        <ul class="radio-wrapper">
+            <li class="vertical-setting" [ngClass]="{'active': sidebarType == 'compact-wrapper'}">
+                <input class="form-check-input" id="radio-icon" type="radio" name="radio2" value="option2" checked=""
+                    (click)="customizeSidebarType('compact-wrapper')"><label class="form-check-label"
+                    for="radio-icon"><span>Vertical</span>
+                </label>
+            </li>
+            <li class="horizontal-setting" [ngClass]="{'active': sidebarType == 'horizontal-sidebar'}">
+                <input class="form-check-input" id="radio-icon4" type="radio" name="radio2" value="option2"
+                    (click)="customizeSidebarType('horizontal-sidebar')">
+                <label class="form-check-label" for="radio-icon4"><span>Horizontal</span></label>
+            </li>
+        </ul>
+    </div>
+</form>

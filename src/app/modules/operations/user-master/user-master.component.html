@@ -1,0 +1,8 @@
+<div class="row mr-3">
+    <div class="col" *ngFor="let card of userMasterStatusCard">
+        <app-dashboard-card [number]="card.number" [label]="card.label" (click)="handleCardClickAction(card)"></app-dashboard-card>
+    </div>
+</div>
+<app-table [jsonData]="userMasterDetailsData" (handleCreateAction)="handleCreateAction()"
+    (handleDeleteAction)="handleDeleteAction($event)" (handleEditAction)="handleEditAction($event)"
+    (handleViewAction)="handleViewAction($event)" (handleSelectRowAction)="handleEditAction($event)" (handlelockAction)="handlelockAction($event)" (handleUnlockAction)="handleUnlockAction($event)"></app-table>

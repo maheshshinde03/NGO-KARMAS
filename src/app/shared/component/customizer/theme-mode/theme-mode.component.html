@@ -1,0 +1,23 @@
+<div class="color-body d-flex align-items-center justify-space-between">
+    <div class="color-img" [ngClass]="{'active': MIXLayout == 'default'}">
+        <img class="img-fluid" src="assets/images/customizer/light.png" alt="defult">
+        <div class="customizer-overlay"></div>
+        <div class="button color-btn light-setting" (click)="customizeMixLayout('default')">
+            <a href="javascript:void(0)">LIGHT</a>
+        </div>
+    </div>
+    <div class="color-img mx-1" [ngClass]="{'active': MIXLayout == 'dark-only'}">
+        <img class="img-fluid" src="assets/images/customizer/dark.png" alt="dark">
+        <div class="customizer-overlay"></div>
+        <div class="button color-btn dark-setting" (click)="customizeMixLayout('dark-only')">
+            <a href="javascript:void(0)">Dark</a>
+        </div>
+    </div>
+    <div class="color-img" [ngClass]="{'active': MIXLayout == 'dark-sidebar'}">
+        <img class="img-fluid" src="assets/images/customizer/mix.png" alt="light">
+        <div class="customizer-overlay"></div>
+        <div class="button color-btn mix-setting" (click)="customizeMixLayout('dark-sidebar')">
+            <a href="javascript:void(0)">Mix</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<label [ngClass]="{'text-danger': required}">{{ label }}</label> &nbsp;&nbsp;
+<span *ngIf="description" class="f-12 w-10 btn-light-danger"> *({{description}})</span>
+<!-- <button *ngIf="description" class="btn edge-btn f-12 w-10 btn-light-primary">({{ description }})</button> -->
+<ng-container [ngSwitch]="type" *ngIf="!extraButtonAdding">
+    <ng-container *ngSwitchCase="'textarea'">
+        <textarea class="form-control" [formControl]="formControl" [placeholder]="placeholder" [name]="name"
+            [rows]="rows" [cols]="cols"></textarea>
+    </ng-container>
+    <ng-container *ngSwitchCase="'editicon'">
+        <div class="input-group">
+            <input class="form-control" type="{{ type }}" (input)="onInputChange($event)" [formControl]="formControl"
+                [placeholder]="placeholder" [name]="name" [attr.disabled]="disable"
+                (keyup)="isUpperCase ? toUppercase($event) : null">
+            <span class="input-group-text list-light-primary custom-cursor-pointer" (click)="onEditIconClick()"><i
+                    class="icofont icofont-pencil-alt-5 font-primary">
+                </i></span>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <input class="form-control" type="{{ type }}" (input)="onInputChange($event)" [formControl]="formControl"
+            [placeholder]="placeholder" [name]="name" [attr.disabled]="disable"
+            (keyup)="isUpperCase ? toUppercase($event) : null">
+    </ng-container>
+</ng-container>
+<ng-container *ngIf="extraButtonAdding">
+    <div class="input-group">
+        <input class="form-control" type="{{ type }}" (input)="onInputChange($event)" [formControl]="formControl"
+            [placeholder]="placeholder" [name]="name" [attr.disabled]="disable"
+            (keyup)="isUpperCase ? toUppercase($event) : null">
+        <span class="input-group-text list-light-primary custom-cursor-pointer" (click)="extraButtonAddingAction(extraButtonAddingText,formControl)"><i
+                [class]="extraButtonAddingIcon">
+            </i>{{extraButtonAddingText}}</span>
+    </div>
+</ng-container>
+<div class="text text-danger mt-1" *ngIf="formControl?.touched && formControl?.invalid">
+    <div *ngIf="formControl?.errors?.['required']">
+        {{ label }} is required.
+    </div>
+    <div *ngIf="formControl?.errors?.['email']">
+        Invalid email format.
+    </div>
+    <div *ngIf="formControl?.errors?.['minlength']">
+        Minimum length is {{ minLength }} characters.
+    </div>
+    <div *ngIf="formControl?.errors?.['maxlength']">
+        Maximum length is {{ maxLength }} characters.
+    </div>
+    <!-- Validation error for Custom -->
+    <div *ngIf="formControl?.errors?.['invalidContactNumber']">
+        Contact number must be 10 digits.
+    </div>
+    <div *ngIf="formControl?.errors?.['invalidPancard']">
+        Invalid pan-card format.
+    </div>
+    <div *ngIf="formControl?.errors?.['invalidAdharcard']">
+        Invalid Aadhaar card format.
+    </div>
+    <div *ngIf="formControl?.errors?.['invalidPassport']">
+        Invalid passport-no format.
+    </div>
+</div>

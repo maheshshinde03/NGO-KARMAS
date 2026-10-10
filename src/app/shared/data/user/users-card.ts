@@ -1,0 +1,68 @@
+export const userCard = [
+    {
+        img: 'assets/images/avatar/1.jpg',
+        name: 'Brooklyn Simmons',
+        userid: '@brookly.simmons',
+        posts: '1,908',
+        followers: '34.0k',
+        following: '897',
+    },
+    {
+        img: 'assets/images/avatar/2.jpg',
+        name: 'Mark Jecno',
+        userid: '@mark.jeco',
+        posts: '875',
+        followers: '12.0k',
+        following: '1400',
+    },
+    {
+        img: 'assets/images/avatar/3.jpg',
+        name: 'Dev John',
+        userid: '@john.dev',
+        posts: '1,274',
+        followers: '15.0k',
+        following: '1874',
+    },
+    {
+        img: 'assets/images/avatar/4.jpg',
+        name: 'Johan Deo',
+        userid: '@deo.johan',
+        posts: '500',
+        followers: '8.0k',
+        following: '570',
+    },
+
+    {
+        img: 'assets/images/avatar/5.jpg',
+        name: 'Douglas Reichel',
+        userid: '@reichel.douglas',
+        posts: '460',
+        followers: '2k',
+        following: '350',
+    },
+    {
+        img: 'assets/images/avatar/6.jpg',
+        name: 'Lisa lillian',
+        userid: '@lisa.lillian',
+        posts: '547 ',
+        followers: '3.5k',
+        following: '822',
+    },
+    {
+        img: 'assets/images/avatar/7.jpg',
+        name: 'Olivia rose',
+        userid: '@rose.olivia',
+        posts: '868 ',
+        followers: '1k',
+        following: '742',
+    },
+    {
+        img: 'assets/images/avatar/8.jpg',
+        name: 'Sarah Karen',
+        userid: '@karen.sarah',
+        posts: '972 ',
+        followers: '2.5k',
+        following: '864',
+    },
+
+]
